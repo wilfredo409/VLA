@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+          <div class="container">
+            <a class="navbar-brand" href="#">Trabajo Semana 7</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                                       
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listado de ejercicios</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="ejercicio1.html">Ejercicio 1</a>
+                            <a class="dropdown-item" href="ejercicio2.html">Ejercicio 2</a>
+                            <a class="dropdown-item" href="ejercicio3.html">Ejercicio 3</a>
+                            <a class="dropdown-item" href="ejercicio4.html">Ejercicio 4</a>
+                            <a class="dropdown-item" href="ejercicio5.html">Ejercicio 5</a>
+                        </div>
+                    </li>
+                </ul>
+               
+            </div>
+      </div>
+    </nav>
+    
+  </header>
+  <main>
+<div class="container">
+<br>
+      <h1>EJERCICIO 4</h1>
+      <h3>
+        Escriba un algoritmo que lea los siguientes valores:
+        precio, impuesto y descuento,
+        y calcule el valor total de la factura. 
+      </h3>
+      <br>
+     <div class="mb-3">
+        <form class="row g-3" >
+       <label for="" class="form-label">Ingrese el precio del articlo</label>
+       <input type="number"
+         class="form-control" name="valor1" id="valor1" aria-describedby="helpId" placeholder="" required>
+       
+       <label for="" class="form-label">Impuesto (0-100%)</label>
+       <input type="range"
+         class="form-control" name="valor2" id="valor2" aria-describedby="helpId" placeholder="" min="0" max="100" value="0" oninput="valor.value = valor2.value">
+         <output  id="valor"></output>
+         <br>
+         <label for="" class="form-label">Descuento (0-100%)</label>
+         <input type="range"
+         class="form-control" name="valor3" id="valor3" aria-describedby="helpId" placeholder="" min="0" max="100" value="0" oninput="rango.value = valor3.value">
+         <output  id="rango"></output>
+         
+       <br>
+       <br>
+     <div class="col-12">
+  <a name="" id="" class="btn btn-primary" href="#" onclick="evaluar()"  role="button"  >Evaluar</a>
+  <br>
+<h3>
+<div id="resultado"></div></h3>
+</div>
+</form>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+
+<script>
+    function evaluar(){
+    var precio = Number(document.getElementById("valor1").value);
+    var impuesto1 = Number(document.getElementById("valor2").value);
+    var descuento1 = Number(document.getElementById("valor3").value);
+    var descuento = precio*(descuento1/100);
+    var impuesto = impuesto1/100;
+    
+    if (precio==0){
+        var res2 = "Favor ingrese un precio ";
+        document.getElementById('resultado').innerHTML = res2;
+    }else if ((impuesto1>100)||(impuesto1<0)){
+        var res2 = "Favor ingrese un impuesto en el rango entre 0 y 100";
+        document.getElementById('resultado').innerHTML = res2;
+    }else if ((descuento1>100)||(descuento1<0) ){
+        var res2 = "Favor ingrese un descuento en el rango entre 0 y 100";
+        document.getElementById('resultado').innerHTML = res2;
+    }else if (((descuento1>100)||(descuento1<0)) && ((impuesto1>100)||(impuesto1<0))){
+        var res2 = "Favor ingrese un rango entre 0 y 100";
+        document.getElementById('resultado').innerHTML = res2;
+    }else{
+    var impuesto2 = ((precio - descuento)*impuesto);
+    var res = (precio - descuento) + impuesto2;
+    var res2 = " Descuento aplicado: "+descuento+ "<br> Impuesto: "+ impuesto2+"<br>Total a pagar : "+res+" Colones ";
+        document.getElementById('resultado').innerHTML = res2;
+    }
+      
+   
+  
+  }
+    </script>
+</body>
+
+</html>

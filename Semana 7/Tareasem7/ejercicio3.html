@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+          <div class="container">
+            <a class="navbar-brand" href="#">Trabajo Semana 7</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                                       
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listado de ejercicios</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="ejercicio1.html">Ejercicio 1</a>
+                            <a class="dropdown-item" href="ejercicio2.html">Ejercicio 2</a>
+                            <a class="dropdown-item" href="ejercicio3.html">Ejercicio 3</a>
+                            <a class="dropdown-item" href="ejercicio4.html">Ejercicio 4</a>
+                            <a class="dropdown-item" href="ejercicio5.html">Ejercicio 5</a>
+                        </div>
+                    </li>
+                </ul>
+               
+            </div>
+      </div>
+    </nav>
+    
+  </header>
+  <main>
+<div class="container">
+<br>
+      <h1>EJERCICIO 3</h1>
+      <h3>
+        Escriba un algoritmo que lea dos valores,
+        determine el mayor valor e imprima el mayor
+        valor con un mensaje de identificación. 
+      </h3>
+      <br>
+     <div class="mb-3">
+       <label for="" class="form-label">Ingrese el valor 1</label>
+       <input type="number"
+         class="form-control" name="valor1" id="valor1" aria-describedby="helpId" placeholder="">
+       
+       <label for="" class="form-label">Ingrese el valor 2</label>
+       <input type="number"
+         class="form-control" name="valor2" id="valor2" aria-describedby="helpId" placeholder="">
+       
+     </div>
+  <a name="" id="" class="btn btn-primary" href="#" onclick="evaluar()"  role="button">Evaluar</a>
+<br>
+<h3>
+<div id="resultado"></div></h3>
+</div>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+
+<script>
+  function evaluar(){
+   var valor1 = Number(document.getElementById("valor1").value);
+   var valor2 = Number(document.getElementById("valor2").value);
+
+    
+  if (valor1>valor2){
+        var dif=valor1-valor2;
+        var res = "El valor 1 es mayor al valor 2 por: "+dif+", Valor 1 = "+ valor1;
+        document.getElementById('resultado').innerHTML = res;
+
+  }else if(valor2>valor1){
+    var dif=valor2-valor1;
+        var res = "El valor 2 es mayor al valor 1 por: "+dif+", Valor 2 = "+ valor2;
+        document.getElementById('resultado').innerHTML = res;
+  }else if(valor2==valor1){
+    
+        var res = "El valor 1 es igual al valor 2"+", Valor 1 = "+ valor1+", Valor 2 = "+ valor2;
+        document.getElementById('resultado').innerHTML = res;
+  }
+      
+   
+  
+  }
+    </script>
+</body>
+
+</html>

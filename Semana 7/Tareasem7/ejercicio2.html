@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+          <div class="container">
+            <a class="navbar-brand" href="#">Trabajo Semana 7</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                                       
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listado de ejercicios</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="ejercicio1.html">Ejercicio 1</a>
+                            <a class="dropdown-item" href="ejercicio2.html">Ejercicio 2</a>
+                            <a class="dropdown-item" href="ejercicio3.html">Ejercicio 3</a>
+                            <a class="dropdown-item" href="ejercicio4.html">Ejercicio 4</a>
+                            <a class="dropdown-item" href="ejercicio5.html">Ejercicio 5</a>
+                        </div>
+                    </li>
+                </ul>
+               
+            </div>
+      </div>
+    </nav>
+    
+  </header>
+  <main>
+<div class="container">
+<br>
+      <h1>EJERCICIO 2</h1>
+      <h3>
+        Usted va a hacer compras por 12000 colones en un comercio
+        y el vendedor le ofrece un descuento de 1000 colones,
+         demuestre como sería más barato el precio final,
+           si primero le aplican el descuento y
+           luego le cobran el 13% de impuesto o que primero
+           le carguen el 13% de impuesto y
+             luego le hagan el descuento.
+      </h3>
+      <br>
+     
+  <a name="" id="" class="btn btn-primary" href="#" onclick="evaluar()"  role="button">Evaluar</a>
+<br>
+<h3>
+<div id="resultado"></div></h3>
+</div>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+
+<script>
+  function evaluar(){
+   var valor1 = 12000;
+   var descuento = 1000;
+
+  var res = ((valor1 * 0.13)+valor1) - descuento;
+  var res2 = valor1 - descuento + ((valor1-descuento) * 0.13);
+   
+  if (res<res2){
+        var menor = "Si se restan los 1000 colones al total con iva se paga el menor precio, Total a pagar: "+ res+" Colones,  si se descuenta antes de impuesto el total es de: "+ res2+" Colones";
+        document.getElementById('resultado').innerHTML = menor;
+
+  }else{
+    var menor2 = "Si se restan los 1000 colones al total sin iva se paga el menor precio, Total a pagar: "+ res2+" Colones,  si se descuenta despues de impuesto el total es de: "+ res+" Colones";
+        document.getElementById('resultado').innerHTML = menor2;
+  }
+      
+   
+  
+  }
+    </script>
+</body>
+
+</html>
