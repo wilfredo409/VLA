@@ -95,18 +95,25 @@ formulario.addEventListener('submit', function(e)
    })
    .then(estructura => estructura.json())
    .then((datosrespuesta) => {
-        myModalsuccess.show()
+        
         completeInsert()
    })
    .catch(console.log);
 });
 
 function completeInsert(){
-    window.location = 'listarcurso.html';
+    myModalEditar.hide();
+    myModalsuccess.show();
+    
+    
 }
 
 
+formulario2.addEventListener('submit', function(e)
+{
+    window.location = 'listarcurso.html';
 
+});
 
 
 
