@@ -55,8 +55,9 @@ function ajustardatostabla(datos2){
 consultardatos();
 
 function mostrarModal(id){
-    myModalEliminar.show();
     
+    document.getElementById('idEliminarCurso').value = id;
+    myModalEliminar.show();
    
    
    
@@ -80,9 +81,9 @@ formulario.addEventListener('submit', function(e)
 {
     
     e.preventDefault();
-   var datosEnviar = {
-        "id2" :document.getElementById('id2').value ,
-        "nombre2" :document.getElementById('nombre2').value ,
+   var datosCurso = {
+        "id" :document.getElementById('id2').value ,
+        "nombre" :document.getElementById('nombre2').value ,
         "descripcion" :document.getElementById('descripcion').value ,
         "tiempo" :document.getElementById('tiempo').value ,
         "usuario" :"Edwin Ceron"
@@ -92,10 +93,10 @@ formulario.addEventListener('submit', function(e)
    apiurl = apibase + apicrear;
    fetch (apiurl, {
     method:'POST',
-    body: JSON.stringify(datosEnviar)
+    body: JSON.stringify(datosCurso)
    })
    .then(estructura => estructura.json())
-   .then((datosrespuesta) => {
+   .then((datosrespuestaCurso) => {
         
         completeInsert()
    })
@@ -104,39 +105,28 @@ formulario.addEventListener('submit', function(e)
 
 function completeInsert(){
     myModalEditar.hide();
-    myModalsuccess.show();
+    window.location.reload();
     
     
 }
 
 
-formulario2.addEventListener('submit', function(e)
-{
-    eliminandodato(id);
-
-});
-
-
-
-function eliminandodato(id2){
-    var datosEnviar = {
-        "id2":id2
+function eliminarCurso(){
+    var datosEliminarCurso = {
+        "id": document.getElementById('idEliminarCurso').value
     }
     fetch(apieliminar, {
         method: 'POST',
-        body: JSON.stringify(datosEnviar)
+        body: JSON.stringify(datosEliminarCurso)
     })
     .then(estructura => estructura.json())
-    .then((datosrespuesta) => {
+    .then((datosDeleteCurso) => {
         //console.log(datosrespuesta)
-        completeDelete();
+        myModalEliminarEstudiante.hide();
+        tablaresultadoEstudiante.innerHTML = ``;
+    window.location.reload();
     })
     .catch(console.log);
+   
 
-}
-
-function completeDelete(){
-    myModalEliminar.hide();
-    tablaresultado.innerHTML = ``;
-    consultardatos();
 }

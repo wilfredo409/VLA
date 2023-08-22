@@ -14,6 +14,7 @@ const myModalEditarEstudiante = new bootstrap.Modal(document.getElementById('myM
 const myModalsuccessEstudiante = new bootstrap.Modal(document.getElementById('myModalsuccessEstudiante'));
 
 
+
 let tablaresultadoEstudiante = document.querySelector('#tablaresultadoEstudiante');
 function consultardatosEstudiante(){
     fetch(apiconsultarEstudiante)
@@ -66,7 +67,7 @@ function ajustardatostablaEstudiante(datos2){
 consultardatosEstudiante();
 
 function mostrarModalEstudiante(id){
-    document.getElementById('id2').value = id;
+    document.getElementById('idEliminar').value = id;
    myModalEliminarEstudiante.show();
    
    
@@ -101,7 +102,7 @@ formularioEstudiante.addEventListener('submit', function(e)
 {
     
     e.preventDefault();
-   var datosEnviar = {
+   var datosEditar = {
         "id" :document.getElementById('id').value ,
         "cedula" :document.getElementById('cedula').value ,
         "correoelectronico" :document.getElementById('correoelectronico').value ,
@@ -122,63 +123,40 @@ formularioEstudiante.addEventListener('submit', function(e)
   var apiurlEstudiante = apibaseEstudiante + apicrearEstudiante;
    fetch (apiurlEstudiante, {
     method:'POST',
-    body: JSON.stringify(datosEnviar)
+    body: JSON.stringify(datosEditar)
    })
    .then(estructura => estructura.json())
-   .then((datosrespuesta) => {
-        
-        completeInsert();
+   .then((datosres) => {
+    myModalEditarEstudiante.hide();
+    window.location.reload();
+    
    })
    .catch(console.log);
 });
 
-function completeInsert(){
-    myModalEditarEstudiante.hide();
-    tablaresultado.innerHTML = ``;
+
+
+function eliminarEstudiante(){
+    var datosEliminar = {
+        "id": document.getElementById('idEliminar').value
+    }
+    fetch(apieliminarEstudiante, {
+        method: 'POST',
+        body: JSON.stringify(datosEliminar)
+    })
+    .then(estructura => estructura.json())
+    .then((datosDelete) => {
+        //console.log(datosrespuesta)
+        myModalEliminarEstudiante.hide();
+        tablaresultadoEstudiante.innerHTML = ``;
     window.location.reload();
+    })
+    .catch(console.log);
+   
+
+}
+
+
+
+
     
-}
-
-frm.addEventListener('submit', function(e){
-    e.preventDefault();
-    var datosEnviar = {
-        "id": document.getElementById('id2').value
-    }
-    fetch(apieliminarEstudiante, {
-        method: 'POST',
-        body: JSON.stringify(datosEnviar)
-    })
-    .then(estructura => estructura.json())
-    .then((datosrespuesta) => {
-        //console.log(datosrespuesta)
-        completeDelete();
-    })
-    .catch(console.log);
-
-});
-
-
-
-
-function eliminandodato(){
-    var datosEnviar = {
-        "id": document.getElementById(objetoindividual2.id)
-    }
-    fetch(apieliminarEstudiante, {
-        method: 'POST',
-        body: JSON.stringify(datosEnviar)
-    })
-    .then(estructura => estructura.json())
-    .then((datosrespuesta) => {
-        //console.log(datosrespuesta)
-        completeDelete();
-    })
-    .catch(console.log);
-
-}
-
-function completeDelete(){
-    myModalEliminarEstudiante.hide();
-    tablaresultado.innerHTML = ``;
-    window.location.reload();
-}

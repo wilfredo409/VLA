@@ -27,6 +27,10 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <script
+  src="https://code.jquery.com/jquery-3.7.0.js"
+  integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script>
 
  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 </head>
@@ -129,222 +133,9 @@
     <!-- ======= About Us Section ======= -->
     <section id="estudiante" class="estudiante">
       <div class="container" data-aos="fade-up">
+        <div id="estudianteJs">
 
-        <div class="section-header">
-          <h2>Estudiantes</h2>
-          <p>Formulario de mantenimiento para estudiantes</p>
         </div>
-
-        <br>
-    <br>
-    <div class="container">
-    
-    <div class="table-responsive-xl ">
-        <table class="display table 
-        table-border-rounded
-	table-hover
-	table-sm	
-        table-borderless
-        table-dark
-	align-middle">
-            <thead class="thead-dark">
-                <caption>Tabla Estudiantes</caption>
-                <tr>
-                    <th>ID</th>
-		    <th>Cédula</th>
-		    <th>Correo</th>
-		    <th>Teléfono</th>
-		    <th>Celular</th>
-		    <th>Fecha Nacimiento</th>
-		    <th>Sexo</th>
-		    <th>Dirección</th>
-                    <th>Nombre</th>
-		    <th>Apellido Paterno</th>
-		    <th>Apellido Materno</th>
-                    <th>Nacionalidad</th>
-                    <th>Carrera</th>
-                    <th>Usuario</th>
-		    <th>Acción</th>
-                    
-                    
-                </tr>
-                </thead>
-                <tbody class="table-group-divider table-success textalign-center" id="tablaresultadoEstudiante">
-                   
-                    
-                </tbody>
-                <tfoot>
-                    
-                </tfoot>
-        </table>
-    </div>
-    
-    </div>
-    <!-- Modal Eliminar -->
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-    <div class="modal fade" id="myModalEliminarEstudiante" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalTitleId">Eliminar Elemento</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          
-          <div class="modal-body">
-	<form id="frm">
-	 <div class="mb-3">
-                
-                <input required type="text"
-                  class="form-control" disabled name="id2" id="id2" aria-describedby="helpId" placeholder="">
-                
-              </div>
-            Esta seguro de Eliminar elemento?
-          </div>
-          <div class="modal-footer">
-           
-             <button type="submit" class="btn btn-danger" >Eliminar</button>
-		</form>
-          </div>
-        </div>
-      </div>
-   </div>
-
-
-
-
-
-
-    <!-- Modal Editar -->
-    <div class="modal fade" id="myModalEditarEstudiante" tabindex="-1" data-bs-backdrop="static" data-bs-config={backdrop:true} data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalTitleId">Editar Elemento</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="formularioEstudiante">
-              <div class="mb-3">
-                <label for="" class="form-label">ID</label>
-                <input required type="text"
-                  class="form-control" disabled name="id" id="id" aria-describedby="helpId" placeholder="Ingrese el ID">
-                
-              </div>
-               <div class="mb-3">
-                <label for="" class="form-label">Cédula</label>
-                <input required type="text"
-                  class="form-control" name="cedula" id="cedula" aria-describedby="helpId" placeholder="Ingrese su cédula">
-                
-              </div>
-               <div class="mb-3">
-                <label for="" class="form-label">Correo Electrónico</label>
-                <input required type="text"
-                  class="form-control" name="correoelectronico" id="correoelectronico" aria-describedby="helpId" placeholder="Ingrese su correo electrónico">
-                
-              </div>
-               <div class="mb-3">
-                <label for="" class="form-label">Teléfono</label>
-                <input required type="text"
-                  class="form-control" name="telefono" id="telefono" aria-describedby="helpId" placeholder="Ingrese su teléfono">
-                
-              </div>
-               <div class="mb-3">
-                <label for="" class="form-label">Celular</label>
-                <input required type="text"
-                  class="form-control" name="telefonocelular" id="telefonocelular" aria-describedby="helpId" placeholder="Ingrese su celular">
-                
-              </div>
-               <div class="mb-3">
-                <label for="" class="form-label">Fecha de nacimiento</label>
-                <input required type="text"
-                  class="form-control" name="fechanacimiento" id="fechanacimiento" aria-describedby="helpId" placeholder="Ingrese su fecha de nacimiento">
-                
-              </div>
-               <div class="mb-3">
-                <label for="" class="form-label">Sexo</label>
-                <input required type="text"
-                  class="form-control" name="sexo" id="sexo" aria-describedby="helpId" placeholder="Ingrese su sexo">
-                
-              </div>
-               <div class="mb-3">
-                <label for="" class="form-label">Dirección</label>
-                <input required type="text"
-                  class="form-control" name="direccion" id="direccion" aria-describedby="helpId" placeholder="Ingrese su dirección">
-                
-              </div>
-              <div class="mb-3">
-                <label for="" class="form-label">Nombre</label>
-                <input required type="text"
-                  class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="Ingrese el nombre">
-                
-              </div>
-              <div class="mb-3">
-                  <label for="" class="form-label">Primer Apellido</label>
-                  <input required type="text"
-                    class="form-control" name="apellidopaterno" id="apellidopaterno" aria-describedby="helpId" placeholder="Ingrese su primer apellido">
-                  
-                </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Segundo Apellido</label>
-                  <input required type="text"
-                    class="form-control" name="apellidomaterno" id="apellidomaterno" aria-describedby="helpId" placeholder="Ingrese segundoapellido">
-                  
-                </div>
-               <div class="mb-3">
-                <label for="" class="form-label">Nacionalidad</label>
-                <input required type="text"
-                  class="form-control" name="nacionalidad" id="nacionalidad" aria-describedby="helpId" placeholder="Ingrese su nacionalidad">
-                
-              </div>
-               <div class="mb-3">
-                <label for="" class="form-label">ID Carrera</label>
-                <input required type="text"
-                  class="form-control" name="idCarreras" id="idCarreras" aria-describedby="helpId" placeholder="Ingrese su cédula">
-                
-              </div>
-               
-                
-              
-                <button type="submit" class="btn btn-primary">Enviar</button>
-      
-          </form>
- </div>
- </div>
- </div>
- 
-
-          <!-- Modal completado -->
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-    <div class="modal fade" id="myModalsuccessEstudiante" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalTitleId">Elemento Actualizado</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              
-          </div>
-          <div class="modal-body">
-            <form id="formulario2Estudiante">
-            Elemento Actualizado!!!!
-          </div>
-          
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-          </form>
-          </div>
-        </div>
-      </div>
-    </div>
-          </div>
-          <div class="modal-footer">
-           
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
       </div>
     </section><!-- End About Us Section -->
 
@@ -404,139 +195,9 @@
 
     <!-- ======= Call To Action Section ======= -->
     <section id="cursos" class="cursos">
-      <div class="container text-center" data-aos="zoom-out">
- <div class="section-header">
-          <h2>Cursos</h2>
-          <p>Formulario de mantenimiento para cursos</p>
-        </div>
-       <br>
-    <div class="container">
-    
-    <div class="table-responsive">
-        <table class="table table-striped
-        table-hover	
-        table-borderless
-        table-primary
-        align-middle">
-            <thead class="table-light">
-                <caption>Tabla Cursos</caption>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Descripcion</th>
-                    <th>Tiempo</th>
-                    <th>Usuario</th>
-                    <th>Accion</th>
-                    
-                </tr>
-                </thead>
-                <tbody class="table-group-divider" id="tablaresultado">
-                   
-                    
-                </tbody>
-                <tfoot>
-                    
-                </tfoot>
-        </table>
-    </div>
-    
-    </div>
-    <!-- Modal Eliminar -->
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-    <div class="modal fade" id="myModalEliminar" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalTitleId">Elemento Eliminado</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Elemento Eliminado!!!!
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            
-          </div>
-        </div>
-      </div>
-    </div>
+      <div id="cursosJs">
 
 
-
-
-
-
-    <!-- Modal Editar -->
-    <div class="modal fade" id="myModalEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalTitleId2">Editar Elemento</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="formulario">
-              <div class="mb-3">
-                <label for="" class="form-label">ID</label>
-                <input required type="text"
-                  class="form-control" disabled name="id2" id="id2" aria-describedby="helpId" placeholder="Ingrese el ID">
-                
-              </div>
-              <div class="mb-3">
-                <label for="" class="form-label">Nombre</label>
-                <input required type="text"
-                  class="form-control" name="nombre2" id="nombre2" aria-describedby="helpId" placeholder="Ingrese el nombre">
-                
-              </div>
-              <div class="mb-3">
-                  <label for="" class="form-label">Descripcion</label>
-                  <input required type="text"
-                    class="form-control" name="descripcion" id="descripcion" aria-describedby="helpId" placeholder="Ingrese descripcion">
-                  
-                </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Tiempo</label>
-                  <input required type="text"
-                    class="form-control" name="tiempo" id="tiempo" aria-describedby="helpId" placeholder="Ingrese Tiempo">
-                  
-                </div>
-                
-              
-                <button type="submit" class="btn btn-primary">Enviar</button>
-      
-          </form>
-
-</div>
-          <!-- Modal completado -->
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-    <div class="modal fade" id="myModalsuccess" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalTitleId">Elemento Actualizado</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              
-          </div>
-          <div class="modal-body">
-            <form id="formulario2">
-            Elemento Actualizado!!!!
-          </div>
-          
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-          </form>
-          </div>
-        </div>
-      </div>
-    </div>
-          </div>
-          <div class="modal-footer">
-           
-            
-          </div>
-        </div>
-      </div>
-    </div>
       </div>
     </section><!-- End Call To Action Section -->
 
@@ -1413,7 +1074,15 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
 
-  <script src="js/listarcursoEstudiante.js"></script>
+  
+
+  <script type="text/JavaScript">
+    $(document).ready(function () {
+      $('#estudianteJs').load('estudiantes.html');
+      $('#cursosJs').load('cursos.html');
+
+    });
+  </script>
   
  
 
