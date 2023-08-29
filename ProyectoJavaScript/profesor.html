@@ -16,8 +16,8 @@
 <div class="table-responsive-xl" data-aos="zoom-out">
   <div class="section-header" >
     <br>
-    <h2>Estudiantes</h2>
-    <p>Formulario de mantenimiento para estudiantes</p>
+    <h2>Profesores</h2>
+    <p>Formulario de mantenimiento para profesores</p>
   
   </div>
   
@@ -30,7 +30,7 @@ table-sm
   table-dark
 align-middle" >
       <thead class="thead-dark">
-          <caption>Tabla Estudiantes</caption>
+          <caption>Tabla Profesores</caption>
           <tr>
               <th>ID</th>
       <th>Cédula</th>
@@ -51,7 +51,7 @@ align-middle" >
               
           </tr>
           </thead>
-          <tbody class="table-group-divider table-success textalign-center" id="tablaresultadoEstudiante">
+          <tbody class="table-group-divider table-success textalign-center" id="tablaresultadoProfesor">
              
               
           </tbody>
@@ -64,7 +64,7 @@ align-middle" >
 
 <!-- Modal Eliminar -->
 <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-<div class="modal fade" id="myModalEliminarEstudiante" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+<div class="modal fade" id="myModalEliminarProfesor" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
   <div class="modal-content">
     <div class="modal-header">
@@ -73,18 +73,18 @@ align-middle" >
     </div>
     
     <div class="modal-body">
-<form id="formularioDel">
+<form id="formularioDel2">
 <div class="mb-3">
           
           <input required type="text"
-            class="form-control" disabled name="idEliminar" id="idEliminar" aria-describedby="helpId" placeholder="">
+            class="form-control" disabled name="idEliminar2" id="idEliminar2" aria-describedby="helpId" placeholder="">
           
         </div>
       Esta seguro de Eliminar elemento?
     
     <div class="modal-footer">
      
-       <button type="button" class="btn btn-danger" onclick="eliminarEstudiante()" >Eliminar</button>
+       <button type="button" class="btn btn-danger" onclick="eliminarProfesor()" >Eliminar</button>
   </form>
     </div>
   </div>
@@ -97,7 +97,7 @@ align-middle" >
 
 
 <!-- Modal Editar -->
-<div class="modal fade" id="myModalEditarEstudiante" tabindex="-1" data-bs-backdrop="static" data-bs-config={backdrop:true} data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+<div class="modal fade" id="myModalEditarProfesor" tabindex="-1" data-bs-backdrop="static" data-bs-config={backdrop:true} data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
   <div class="modal-content">
     <div class="modal-header">
@@ -105,83 +105,83 @@ align-middle" >
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-      <form id="formularioEstudiante">
+      <form id="formularioProfesor">
         <div class="mb-3">
           <label for="" class="form-label">ID</label>
           <input required type="text"
-            class="form-control" disabled name="id" id="id" aria-describedby="helpId" placeholder="Ingrese el ID">
+            class="form-control" disabled name="id" id="idProfesor" aria-describedby="helpId" placeholder="Ingrese el ID">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Cédula</label>
           <input required type="text"
-            class="form-control" name="cedula" id="cedula" aria-describedby="helpId" placeholder="Ingrese su cédula">
+            class="form-control" name="cedula" id="cedulaProfesor" aria-describedby="helpId" placeholder="Ingrese su cédula">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Correo Electrónico</label>
           <input required type="text"
-            class="form-control" name="correoelectronico" id="correoelectronico" aria-describedby="helpId" placeholder="Ingrese su correo electrónico">
+            class="form-control" name="correoelectronico" id="correoelectronicoProfesor" aria-describedby="helpId" placeholder="Ingrese su correo electrónico">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Teléfono</label>
           <input required type="text"
-            class="form-control" name="telefono" id="telefono" aria-describedby="helpId" placeholder="Ingrese su teléfono">
+            class="form-control" name="telefono" id="telefonoProfesor" aria-describedby="helpId" placeholder="Ingrese su teléfono">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Celular</label>
           <input required type="text"
-            class="form-control" name="telefonocelular" id="telefonocelular" aria-describedby="helpId" placeholder="Ingrese su celular">
+            class="form-control" name="telefonocelular" id="telefonocelularProfesor" aria-describedby="helpId" placeholder="Ingrese su celular">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Fecha de nacimiento</label>
           <input required type="text"
-            class="form-control" name="fechanacimiento" id="fechanacimiento" aria-describedby="helpId" placeholder="Ingrese su fecha de nacimiento">
+            class="form-control" name="fechanacimiento" id="fechanacimientoProfesor" aria-describedby="helpId" placeholder="Ingrese su fecha de nacimiento">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Sexo</label>
           <input required type="text"
-            class="form-control" name="sexo" id="sexo" aria-describedby="helpId" placeholder="Ingrese su sexo">
+            class="form-control" name="sexo" id="sexoProfesor" aria-describedby="helpId" placeholder="Ingrese su sexo">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Dirección</label>
           <input required type="text"
-            class="form-control" name="direccion" id="direccion" aria-describedby="helpId" placeholder="Ingrese su dirección">
+            class="form-control" name="direccion" id="direccionProfesor" aria-describedby="helpId" placeholder="Ingrese su dirección">
           
         </div>
         <div class="mb-3">
           <label for="" class="form-label">Nombre</label>
           <input required type="text"
-            class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="Ingrese el nombre">
+            class="form-control" name="nombre" id="nombreProfesor" aria-describedby="helpId" placeholder="Ingrese el nombre">
           
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Primer Apellido</label>
             <input required type="text"
-              class="form-control" name="apellidopaterno" id="apellidopaterno" aria-describedby="helpId" placeholder="Ingrese su primer apellido">
+              class="form-control" name="apellidopaterno" id="apellidopaternoProfesor" aria-describedby="helpId" placeholder="Ingrese su primer apellido">
             
           </div>
           <div class="mb-3">
             <label for="" class="form-label">Segundo Apellido</label>
             <input required type="text"
-              class="form-control" name="apellidomaterno" id="apellidomaterno" aria-describedby="helpId" placeholder="Ingrese segundoapellido">
+              class="form-control" name="apellidomaterno" id="apellidomaternoProfesor" aria-describedby="helpId" placeholder="Ingrese segundoapellido">
             
           </div>
          <div class="mb-3">
           <label for="" class="form-label">Nacionalidad</label>
           <input required type="text"
-            class="form-control" name="nacionalidad" id="nacionalidad" aria-describedby="helpId" placeholder="Ingrese su nacionalidad">
+            class="form-control" name="nacionalidad" id="nacionalidadProfesor" aria-describedby="helpId" placeholder="Ingrese su nacionalidad">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">ID Carrera</label>
           <input required type="text"
-            class="form-control" name="idCarreras" id="idCarreras" aria-describedby="helpId" placeholder="Ingrese su cédula">
+            class="form-control" name="idCarreras" id="idCarrerasProfesor" aria-describedby="helpId" placeholder="Ingrese su cédula">
           
         </div>
          
@@ -200,7 +200,7 @@ align-middle" >
 
     <!-- Modal completado -->
 <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-<div class="modal fade" id="myModalsuccessEstudiante" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+<div class="modal fade" id="myModalsuccessProfesor" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
   <div class="modal-content">
     <div class="modal-header">
@@ -209,7 +209,7 @@ align-middle" >
         
     </div>
     <div class="modal-body">
-      <form id="formulario2Estudiante">
+      <form id="formulario2Profesor">
       Elemento Actualizado!!!!
     </div>
     
@@ -243,7 +243,7 @@ align-middle" >
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
  </script>
- <script src="js/listarcursoEstudiante.js"></script>
+ <script src="js/listarcursoProfesor.js"></script>
 </body>
 
 

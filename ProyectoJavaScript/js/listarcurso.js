@@ -37,15 +37,15 @@ function ajustardatostabla(datos2){
 
            tablaresultado.innerHTML += `
            
-           <tr class="table-primary" >
+           <tr class="table-success text-align-center" >
            <td scope="row">${objetoindividual.id}</td>
            <td>${objetoindividual.nombre}</td>
            <td>${objetoindividual.descripcion}</td>
            <td>${objetoindividual.tiempo}</td>
            <td>${objetoindividual.usuario}</td>
            <td>
-           <a name="Eliminar" id="Eliminar" class="btn btn-danger"  role="button" data-bs-toggle="modal" data-bs-target="#myModalEliminar" onclick="mostrarModal('${objetoindividual.id}')">Eliminar</a>
-           <a name="Editar" id="editar" class="btn btn-primary"  role="button" data-bs-toggle="modal" data-bs-target="#myModalEditar" onclick="mostrarEditarModal('${objetoindividual.id}','${objetoindividual.nombre}','${objetoindividual.descripcion}','${objetoindividual.tiempo}')">Editar</a>
+           <a name="Eliminar" id="Eliminar" class="btn-get-started"  role="button" data-bs-toggle="modal" data-bs-target="#myModalEliminar" onclick="mostrarModal('${objetoindividual.id}')">Eliminar |</a>
+           <a name="Editar" id="editar" class="btn-get-started"  role="button" data-bs-toggle="modal" data-bs-target="#myModalEditar" onclick="mostrarEditarModal('${objetoindividual.id}','${objetoindividual.nombre}','${objetoindividual.descripcion}','${objetoindividual.tiempo}')">| Editar</a>
            </td>
        </tr>`;
         }
