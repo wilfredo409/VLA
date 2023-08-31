@@ -1,6 +1,7 @@
 const newLocalGrupo = "https://paginas-web-cr.com/ApiPHP/apis/ListaGrupo.php";
 var apiconsultarGrupo = newLocalGrupo;
 var apieliminarGrupo = "https://paginas-web-cr.com/ApiPHP/apis/BorrarGrupo.php";
+var apiInsertarGrupo = "https://paginas-web-cr.com/ApiPHP/apis/InsertarGrupo.php";
 var apibaseGrupo = "https://paginas-web-cr.com/ApiPHP/apis/";
 var apicrearGrupo = "ActualizarGrupo.php";
 
@@ -10,6 +11,8 @@ const myModalEliminarGrupo = new bootstrap.Modal(document.getElementById('myModa
 const myModalEditarGrupo = new bootstrap.Modal(document.getElementById('myModalEditarGrupo'));
 
 const myModalsuccessGrupo = new bootstrap.Modal(document.getElementById('myModalsuccessGrupo'));
+
+const myModalCrearGrupo = new bootstrap.Modal(document.getElementById('myModalCrearGrupo'));
 
 
 let tablaresultadoGrupo = document.querySelector('#tablaresultadoGrupo');
@@ -94,7 +97,31 @@ function EditarGrupo(){
    }).catch(console.log);
 }
 
+function crearGrupo(){
+myModalCrearGrupo.show();
 
+}
+
+function CrearNuevoGrupo(){
+    var datosCrearGrupo = {
+        "nombre" :document.getElementById('nombreGrupo').value ,
+       
+
+
+   }
+   
+   fetch (apiInsertarGrupo, {
+    method:'POST',
+    body: JSON.stringify(datosCrearGrupo)
+   })
+   .then(estructura => estructura.json())
+   .then((datosrespuesta) => {
+    myModalCrearGrupo.hide();
+    window.location.reload();
+   })
+   .catch(console.log);
+
+}
 
 
 function eliminarGrupo(){

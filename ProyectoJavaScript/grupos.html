@@ -15,7 +15,7 @@
             table-dark
           align-middle">
                 <thead class="table-dark">
-                    <caption>Tabla Grupos</caption>
+                    <caption><br> Agregar un nuevo Grupo   <button type="button" class="btn btn-primary" onclick="crearGrupo()">+</button></caption>
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
@@ -102,6 +102,34 @@
  </div>
  </div>
  </div>
+
+ <!-- Modal Crear -->
+ <div class="modal fade" id="myModalCrearGrupo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId2">Crear un Nuevo Grupo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+          <div class="mb-3">
+            <label for="" class="form-label">Nombre</label>
+            <input required type="text"
+              class="form-control" name="nombre4" id="nombreGrupo" aria-describedby="helpId" placeholder="Ingrese el nombre">
+            
+          </div>
+          
+            
+          
+            <button type="button" onclick="CrearNuevoGrupo()" class="btn btn-primary">Enviar</button>
+  
+      
+
+</div>
+</div>
+</div>
+</div>
               <!-- Modal completado -->
         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
         <div class="modal fade" id="myModalsuccessGrupo" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">

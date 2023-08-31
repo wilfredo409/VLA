@@ -3,6 +3,7 @@
 const newLocal = "https://paginas-web-cr.com/ApiPHP/apis/ListaCurso.php";
 var apiconsultar = newLocal
 var apieliminar = "https://paginas-web-cr.com/ApiPHP/apis/BorrarCursos.php";
+var apiInsertarCurso = "https://paginas-web-cr.com/ApiPHP/apis/InsertarCursos.php";
 var apibase = "https://paginas-web-cr.com/ApiPHP/apis/";
 var apicrear = "ActualizarCursos.php";
 
@@ -12,6 +13,8 @@ const myModalEliminar = new bootstrap.Modal(document.getElementById('myModalElim
 const myModalEditar = new bootstrap.Modal(document.getElementById('myModalEditar'));
 
 const myModalsuccess = new bootstrap.Modal(document.getElementById('myModalsuccess'));
+
+const myModalCrearCurso = new bootstrap.Modal(document.getElementById('myModalCrearCurso'));
 
 
 let tablaresultado = document.querySelector('#tablaresultado');
@@ -108,6 +111,35 @@ function completeInsert(){
     
     
 }
+
+function crearCurso(){
+    myModalCrearCurso.show();
+    
+    }
+    
+    function CrearNuevoCurso(){
+        var datosCrearCurso = {
+            "nombre" :document.getElementById('nombreCrearCurso').value ,
+            "descripcion" :document.getElementById('descripcionCurso').value ,
+            "tiempo" :document.getElementById('tiempoCurso').value ,
+            "usuario" :"Edwin Ceron"
+           
+    
+    
+       }
+       
+       fetch (apiInsertarCurso, {
+        method:'POST',
+        body: JSON.stringify(datosCrearCurso)
+       })
+       .then(estructura => estructura.json())
+       .then((datosrespuesta) => {
+        myModalCrearCurso.hide();
+        window.location.reload();
+       })
+       .catch(console.log);
+    
+    }
 
 
 function eliminarCurso(){

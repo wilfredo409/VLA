@@ -3,8 +3,11 @@
 const newLocalProfesor = "https://paginas-web-cr.com/ApiPHP/apis/ListaProfesores.php";
 var apiconsultarProfesor = newLocalProfesor;
 var apieliminarProfesor = "https://paginas-web-cr.com/ApiPHP/apis/BorrarProfesores.php";
+var apiInsertarProfesor = "https://paginas-web-cr.com/ApiPHP/apis/InsertarProfesores.php";
 var apibaseProfesor = "https://paginas-web-cr.com/ApiPHP/apis/";
 var apicrearProfesor = "ActualizarProfesores.php";
+
+
 
 
 const myModalEliminarProfesor = new bootstrap.Modal(document.getElementById('myModalEliminarProfesor'));
@@ -12,6 +15,8 @@ const myModalEliminarProfesor = new bootstrap.Modal(document.getElementById('myM
 const myModalEditarProfesor = new bootstrap.Modal(document.getElementById('myModalEditarProfesor'));
 
 const myModalsuccessProfesor = new bootstrap.Modal(document.getElementById('myModalsuccessProfesor'));
+
+const myModalCrearProfesor = new bootstrap.Modal(document.getElementById('myModalCrearProfesor'));
 
 
 
@@ -134,7 +139,44 @@ formularioProfesor.addEventListener('submit', function(e)
    .catch(console.log);
 });
 
-
+function crearProfesor(){
+    myModalCrearProfesor.show();
+    
+    }
+    
+    function CrearNuevoProfesor(){
+        var datosCrearProfesor = {
+            
+            "cedula" :document.getElementById('cedulaCrearProfesor').value ,
+            "correoelectronico" :document.getElementById('correoelectronicoCrearProfesor').value ,
+            "telefono" :document.getElementById('telefonoCrearProfesor').value ,
+            "telefonocelular" :document.getElementById('telefonocelularCrearProfesor').value ,
+            "fechanacimiento" :document.getElementById('fechanacimientoCrearProfesor').value ,
+            "sexo" :document.getElementById('sexoCrearProfesor').value ,
+            "direccion" :document.getElementById('direccionCrearProfesor').value ,
+            "nombre" :document.getElementById('nombreCrearProfesor').value ,
+            "apellidopaterno" :document.getElementById('apellidopaternoCrearProfesor').value ,
+            "apellidomaterno" :document.getElementById('apellidomaternoCrearProfesor').value ,
+            "nacionalidad" :document.getElementById('nacionalidadCrearProfesor').value ,
+            "idCarreras" :document.getElementById('idCarrerasCrearProfesor').value ,
+            "usuario" :"Edwin Ceron"
+           
+    
+    
+       }
+       
+       fetch (apiInsertarProfesor, {
+        method:'POST',
+        body: JSON.stringify(datosCrearProfesor)
+       })
+       .then(estructura => estructura.json())
+       .then((datosrespuesta) => {
+        myModalCrearProfesor.hide();
+        window.location.reload();
+       })
+       .catch(console.log);
+    
+    }
 
 function eliminarProfesor(){
     var datosEliminar = {
@@ -155,6 +197,11 @@ function eliminarProfesor(){
    
 
 }
+
+
+
+
+
 
 
 
