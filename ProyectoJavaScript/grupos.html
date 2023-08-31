@@ -1,0 +1,135 @@
+    
+       <div class="container">
+       
+        <div class="table-responsive"  data-aos="zoom-out">
+ 
+         <div class="section-header">
+           <h2>Grupos</h2>
+           <p>Formulario de mantenimiento para Grupos</p>
+         </div>
+            <table class="display table 
+            table-border-rounded
+          table-hover
+          table-sm	
+            table-borderless
+            table-dark
+          align-middle">
+                <thead class="table-dark">
+                    <caption>Tabla Grupos</caption>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Accion</th>
+                        
+                        
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider table-success textalign-center" id="tablaresultadoGrupo">
+                       
+                        
+                    </tbody>
+                    <tfoot>
+                        
+                    </tfoot>
+            </table>
+        </div>
+        
+        </div>
+        <!-- Modal Eliminar -->
+        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+        <div class="modal fade" id="myModalEliminarGrupo" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">Eliminando Elemento</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                 <form id="formularioGrupo">
+                 <div class="mb-3">
+                           
+                           <input required type="text"
+                             class="form-control" disabled name="idEliminarGrupo" id="idEliminarGrupo" aria-describedby="helpId" placeholder="">
+                           
+                         </div>
+                       Esta seguro de Eliminar elemento?
+                     
+                     <div class="modal-footer">
+                      
+                        <button type="button" class="btn btn-danger" onclick="eliminarGrupo()" >Eliminar</button>
+                   </form>
+                   </div>
+                     </div>
+            </div>
+          </div>
+        
+         </div>
+    
+    
+    
+    
+    
+        <!-- Modal Editar -->
+        <div class="modal fade" id="myModalEditarGrupo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId2">Editar Elemento</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                
+                  <div class="mb-3">
+                    <label for="" class="form-label">ID</label>
+                    <input required type="text"
+                      class="form-control" disabled name="id3" id="id3" aria-describedby="helpId" placeholder="Ingrese el ID">
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="form-label">Nombre</label>
+                    <input required type="text"
+                      class="form-control" name="nombre3" id="nombre3" aria-describedby="helpId" placeholder="Ingrese el nombre">
+                    
+                  </div>
+                  
+                    
+                  
+                    <button type="button" onclick="EditarGrupo()" class="btn btn-primary">Enviar</button>
+          
+              
+    
+    </div>
+ </div>
+ </div>
+ </div>
+              <!-- Modal completado -->
+        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+        <div class="modal fade" id="myModalsuccessGrupo" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">Elemento Actualizado</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  
+              </div>
+              <div class="modal-body">
+                <form id="formulario3">
+                Elemento Actualizado!!!!
+              </div>
+              
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+              </form>
+              </div>
+            </div>
+          </div>
+        
+              
+              <div class="modal-footer">
+              </div>
+                
+             </div>
+        
+          
+ 
+        <script src="js/listargrupo.js"></script>

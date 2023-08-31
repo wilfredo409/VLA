@@ -77,11 +77,10 @@ function mostrarEditarModal(id2,nombre2,descripcion,tiempo){
 
 }
 
-formulario.addEventListener('submit', function(e)
+function EditarCurso()
 {
     
-    e.preventDefault();
-   var datosCurso = {
+    var datosCurso = {
         "id" :document.getElementById('id2').value ,
         "nombre" :document.getElementById('nombre2').value ,
         "descripcion" :document.getElementById('descripcion').value ,
@@ -101,7 +100,7 @@ formulario.addEventListener('submit', function(e)
         completeInsert()
    })
    .catch(console.log);
-});
+}
 
 function completeInsert(){
     myModalEditar.hide();
@@ -122,8 +121,8 @@ function eliminarCurso(){
     .then(estructura => estructura.json())
     .then((datosDeleteCurso) => {
         //console.log(datosrespuesta)
-        myModalEliminarEstudiante.hide();
-        tablaresultadoEstudiante.innerHTML = ``;
+        myModalEliminar.hide();
+        tablaresultado.innerHTML = ``;
     window.location.reload();
     })
     .catch(console.log);
