@@ -30,7 +30,7 @@ table-sm
   table-dark
 align-middle" >
       <thead class="thead-dark">
-          <caption>Tabla Estudiantes</caption>
+        <caption><br> Agregar un nuevo Estudiante   <button type="button" class="btn btn-primary" onclick="crearEstudiante()">+</button></caption>
           <tr>
               <th>ID</th>
       <th>Cédula</th>
@@ -114,31 +114,31 @@ align-middle" >
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Cédula</label>
-          <input required type="text"
+          <input required type="number"
             class="form-control" name="cedula" id="cedula" aria-describedby="helpId" placeholder="Ingrese su cédula">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Correo Electrónico</label>
-          <input required type="text"
+          <input required type="email"
             class="form-control" name="correoelectronico" id="correoelectronico" aria-describedby="helpId" placeholder="Ingrese su correo electrónico">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Teléfono</label>
-          <input required type="text"
+          <input required type="number"
             class="form-control" name="telefono" id="telefono" aria-describedby="helpId" placeholder="Ingrese su teléfono">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Celular</label>
-          <input required type="text"
+          <input required type="number"
             class="form-control" name="telefonocelular" id="telefonocelular" aria-describedby="helpId" placeholder="Ingrese su celular">
           
         </div>
          <div class="mb-3">
           <label for="" class="form-label">Fecha de nacimiento</label>
-          <input required type="text"
+          <input required type="date"
             class="form-control" name="fechanacimiento" id="fechanacimiento" aria-describedby="helpId" placeholder="Ingrese su fecha de nacimiento">
           
         </div>
@@ -180,7 +180,7 @@ align-middle" >
         </div>
          <div class="mb-3">
           <label for="" class="form-label">ID Carrera</label>
-          <input required type="text"
+          <input required type="number"
             class="form-control" name="idCarreras" id="idCarreras" aria-describedby="helpId" placeholder="Ingrese su cédula">
           
         </div>
@@ -195,6 +195,102 @@ align-middle" >
 </div>
 </div>
 
+
+
+
+
+<!-- Modal Crear -->
+<div class="modal fade" id="myModalCrearEstudiante" tabindex="-1" data-bs-backdrop="static" data-bs-config={backdrop:true} data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Editar Elemento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+           <div class="mb-3">
+            <label for="" class="form-label">Cédula</label>
+            <input required type="number"
+              class="form-control" name="cedula" id="cedulaCrear" aria-describedby="helpId" placeholder="Ingrese su cédula">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Correo Electrónico</label>
+            <input required type="email"
+              class="form-control" name="correoelectronico" id="correoelectronicoCrear" aria-describedby="helpId" placeholder="Ingrese su correo electrónico">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Teléfono</label>
+            <input required type="number"
+              class="form-control" name="telefono" id="telefonoCrear" aria-describedby="helpId" placeholder="Ingrese su teléfono">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Celular</label>
+            <input required type="number"
+              class="form-control" name="telefonocelular" id="telefonocelularCrear" aria-describedby="helpId" placeholder="Ingrese su celular">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Fecha de nacimiento</label>
+            <input required type="date"
+              class="form-control" name="fechanacimiento" id="fechanacimientoCrear" aria-describedby="helpId" placeholder="Ingrese su fecha de nacimiento">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Sexo</label>
+            <input required type="text"
+              class="form-control" name="sexo" id="sexoCrear" aria-describedby="helpId" placeholder="Ingrese su sexo">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Dirección</label>
+            <input required type="text"
+              class="form-control" name="direccion" id="direccionCrear" aria-describedby="helpId" placeholder="Ingrese su dirección">
+            
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Nombre</label>
+            <input required type="text"
+              class="form-control" name="nombre" id="nombreCrear" aria-describedby="helpId" placeholder="Ingrese el nombre">
+            
+          </div>
+          <div class="mb-3">
+              <label for="" class="form-label">Primer Apellido</label>
+              <input required type="text"
+                class="form-control" name="apellidopaterno" id="apellidopaternoCrear" aria-describedby="helpId" placeholder="Ingrese su primer apellido">
+              
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Segundo Apellido</label>
+              <input required type="text"
+                class="form-control" name="apellidomaterno" id="apellidomaternoCrear" aria-describedby="helpId" placeholder="Ingrese segundoapellido">
+              
+            </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Nacionalidad</label>
+            <input required type="text"
+              class="form-control" name="nacionalidad" id="nacionalidadCrear" aria-describedby="helpId" placeholder="Ingrese su nacionalidad">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">ID Carrera</label>
+            <input required type="number"
+              class="form-control" name="idCarreras" id="idCarrerasCrear" aria-describedby="helpId" placeholder="Ingrese su cédula">
+            
+          </div>
+           
+            
+          
+            <button type="button" class="btn btn-primary" onclick="CrearNuevoEstudiante()">Enviar</button>
+  
+      
+  </div>
+  </div>
+  </div>
+  </div>
 
 
 

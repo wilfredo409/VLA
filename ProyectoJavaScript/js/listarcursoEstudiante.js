@@ -3,6 +3,7 @@
 const newLocalEstudiante = "https://paginas-web-cr.com/ApiPHP/apis/ListaEstudiantes.php";
 var apiconsultarEstudiante = newLocalEstudiante;
 var apieliminarEstudiante = "https://paginas-web-cr.com/ApiPHP/apis/BorrarEstudiantes.php";
+var apiInsertarEstudiante = "https://paginas-web-cr.com/ApiPHP/apis/InsertarEstudiantes.php";
 var apibaseEstudiante = "https://paginas-web-cr.com/ApiPHP/apis/";
 var apicrearEstudiante = "ActualizarEstudiantes.php";
 
@@ -13,6 +14,7 @@ const myModalEditarEstudiante = new bootstrap.Modal(document.getElementById('myM
 
 const myModalsuccessEstudiante = new bootstrap.Modal(document.getElementById('myModalsuccessEstudiante'));
 
+const myModalCrearEstudiante = new bootstrap.Modal(document.getElementById('myModalCrearEstudiante'));
 
 
 let tablaresultadoEstudiante = document.querySelector('#tablaresultadoEstudiante');
@@ -155,6 +157,45 @@ function eliminarEstudiante(){
    
 
 }
+
+
+function crearEstudiante(){
+    myModalCrearEstudiante.show();
+    
+    }
+    
+    function CrearNuevoEstudiante(){
+        var datosCrearEstudiante = {
+            "cedula" :document.getElementById('cedulaCrear').value ,
+        "correoelectronico" :document.getElementById('correoelectronicoCrear').value ,
+        "telefono" :document.getElementById('telefonoCrear').value ,
+        "telefonocelular" :document.getElementById('telefonocelularCrear').value ,
+        "fechanacimiento" :document.getElementById('fechanacimientoCrear').value ,
+        "sexo" :document.getElementById('sexoCrear').value ,
+        "direccion" :document.getElementById('direccionCrear').value ,
+        "nombre" :document.getElementById('nombreCrear').value ,
+        "apellidopaterno" :document.getElementById('apellidopaternoCrear').value ,
+        "apellidomaterno" :document.getElementById('apellidomaternoCrear').value ,
+        "nacionalidad" :document.getElementById('nacionalidadCrear').value ,
+        "idCarreras" :document.getElementById('idCarrerasCrear').value ,
+        "usuario" :"Edwin Ceron"
+           
+    
+    
+       }
+       
+       fetch (apiInsertarEstudiante, {
+        method:'POST',
+        body: JSON.stringify(datosCrearEstudiante)
+       })
+       .then(estructura => estructura.json())
+       .then((datosrespuesta) => {
+        myModalCrearEstudiante.hide();
+        window.location.reload();
+       })
+       .catch(console.log);
+    
+    }
 
 
 
