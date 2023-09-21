@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        var urlgrupo = "https://paginas-web-cr.com/ApiPHP/apis/ListaGrupo.php";
+        var urlgrupo2 = "https://paginas-web-cr.com/ApiPHP/apis/InsertarGrupo.php";
+        var urlEliminargrupo = "https://paginas-web-cr.com/ApiPHP/apis/BorrarGrupo.php";
+
+        $(document).ready(function () {
+            cargardatosgrupo();
+        });
+        
+        
+        
+        
+
+        function cargardatosgrupo(){
+            let tablaresultadogrupo = document.querySelector('#tablagrupo');
+            $.ajax({
+                type: "POST", 
+                url: urlgrupo,
+                dataType: "json",
+                success: function (response){
+                    ajustardatostablagrupo(response.data);
+                },
+                error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+            });
+
+
+
+
+        }
+
+        function ajustardatostablagrupo(datosGrupo){
+        
+        for (const objetoindividual of datosGrupo) {
+          // console.log(objetoindividual.id);
+           //console.log(objetoindividual.nombre);
+           //console.log(objetoindividual.descripcion);
+          // console.log(objetoindividual.tiempo);
+          // console.log(objetoindividual.usuario);
+           //console.log("////////");
+
+           tablagrupo.innerHTML += `
+           
+           <tr class="table-success text-align-center" >
+           <td scope="row">${objetoindividual.id}</td>
+           <td>${objetoindividual.nombre}</td>
+           <td>
+           <a name="Eliminar" id="Eliminar" class="btn-get-started"  role="button" data-bs-toggle="modal" data-bs-target="#myModalEliminarGrupo" onclick="mostrarModalgrupo('${objetoindividual.id}')">Eliminar |</a>
+           <a name="Editar" id="editar" class="btn-get-started"  role="button" data-bs-toggle="modal" data-bs-target="#myModalEditarGrupo" onclick="mostrarEditarModalGrupo('${objetoindividual.id}','${objetoindividual.nombre}')">| Editar</a>
+           </td>
+       </tr>`;
+        }
+}
+
+function crearGrupo(){
+  $('#myModalCrearGrupo').modal('show');
+
+
+}
+
+function crearGrupo2(){
+  var datosCrearGrupo = {
+            "nombre" :$("#nombreCrearGrupo").val(),
+                    
+    
+    
+       }
+
+
+  $.ajax({
+    type: "POST",
+    url: urlgrupo2,
+    data: JSON.stringify(datosCrearGrupo),
+    dataType: "json",
+    success: function (response) {
+      $('#myModalCrearGrupo').modal('hide');
+      location.reload();
+
+    },
+    error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+  });
+}
+function mostrarModalgrupo(id){
+    
+    $('#idEliminarGrupo').val(id);
+    $('#myModalEliminarGrupo').modal('show');
+   
+   
+   
+}
+
+function eliminarGrupo(){
+    var datosEliminarGrupo = {
+        "id": $('#idEliminarGrupo').val()
+    }
+
+
+    $.ajax({
+    type: "POST",
+    url: urlEliminargrupo,
+    data: JSON.stringify(datosEliminarGrupo),
+    dataType: "json",
+    success: function (response) {
+      $('#myModalEliminarGrupo').modal('hide');
+      location.reload();
+
+    },
+    error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+  });
+}
+
+  function mostrarEditarModalGrupo(idGrupo2,nombreGrupo2){
+   
+
+    $('#idGrupo').val(idGrupo2);
+    $('#nombreGrupo').val(nombreGrupo2);
+    
+
+    $('#myModalEditarGrupo').modal('show');
+    
+   
+    
+    
+
+}
+
+
+function EditarGrupo()
+{
+    
+    var datosGrupo = {
+        "id" :$('#idGrupo').val(),
+        "nombre" :$('#nombreGrupo').val() ,
+       
+
+   }
+   apiurlgrupo = "https://paginas-web-cr.com/ApiPHP/apis/ActualizarGrupo.php"
+   $.ajax({
+    type: "POST",
+    url: apiurlgrupo,
+    data: JSON.stringify(datosGrupo),
+    dataType: "json",
+    success: function (response) {
+      $('#myModalEditarGrupo').modal('hide');
+      location.reload();
+
+    },
+    error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+  });
+}
+
+   
+
+
+
+    </script>
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+  </header>
+  <main>
+    <div class="table-responsive container"  data-aos="zoom-out">
+
+        <div class="section-header">
+          <h2>Grupo</h2>
+          <p>Formulario de mantenimiento para grupos</p>
+        </div>
+           <table class="display table 
+           table-border-rounded
+         table-hover
+         table-sm	
+           table-borderless
+           table-dark
+         align-middle">
+               <thead class="table-dark">
+                <caption><br><b> Agregar un nuevo Grupo </b>   <button type="button" class="btn btn-primary" onclick="crearGrupo()">+</button></caption>
+                   <tr>
+                       <th>ID</th>
+                       <th>Nombre</th>
+                       <th>Accion</th>
+                       
+                   </tr>
+                   </thead>
+                   <tbody class="table-group-divider table-success textalign-center" id="tablagrupo">
+                      
+                       
+                   </tbody>
+                   <tfoot>
+                       
+                   </tfoot>
+           </table>
+       </div>
+
+       <div class="modal fade" id="myModalCrearGrupo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitleId2grupo">Crear Grupo Nuevo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             
+               
+                <div class="mb-3">
+                  <label for="" class="form-label">Nombre</label>
+                  <input required type="text"
+                    class="form-control" name="nombre2" id="nombreCrearGrupo" aria-describedby="helpId" placeholder="Ingrese el nombre">
+                  
+                </div>
+                                  
+                
+                  <button type="button" class="btn btn-primary" onclick="crearGrupo2()">Crear</button>
+
+
+                  
+        
+           
+      
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+      <!-- Modal Eliminar -->
+       <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+       <div class="modal fade" id="myModalEliminarGrupo" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitleIdgrupo">Eliminando Elemento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <form id="formularioDelcurso">
+               <div class="mb-3">
+                         
+                         <input required type="text"
+                           class="form-control" disabled name="idEliminarCurso" id="idEliminarGrupo" aria-describedby="helpId" placeholder="">
+                         
+                       </div>
+                     Esta seguro de Eliminar elemento?
+                   
+                   <div class="modal-footer">
+                    
+                      <button type="button" class="btn btn-danger" onclick="eliminarGrupo()" >Eliminar</button>
+                 </form>
+                 </div>
+                   </div>
+          </div>
+        </div>
+
+      </div>
+        <!-- Modal Editar -->
+       <div class="modal fade" id="myModalEditarGrupo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitleId2grupo3">Editar Elemento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             
+                <div class="mb-3">
+                  <label for="" class="form-label">ID</label>
+                  <input required type="text"
+                    class="form-control" disabled name="idGrupo" id="idGrupo" aria-describedby="helpId" placeholder="Ingrese el ID">
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Nombre</label>
+                  <input required type="text"
+                    class="form-control" name="nombreGrupo" id="nombreGrupo" aria-describedby="helpId" placeholder="Ingrese el nombre">
+                  
+                </div>
+                                  
+                
+                  <button type="button" class="btn btn-primary" onclick="EditarGrupo()">Editar</button>
+        
+           
+  
+  </div>
+</div>
+</div>
+</div>
+
+
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+ 
+</body>
+
+</html>

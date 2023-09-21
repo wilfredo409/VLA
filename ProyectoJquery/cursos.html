@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        var url = "https://paginas-web-cr.com/ApiPHP/apis/ListaCurso.php";
+        var url2 = "https://paginas-web-cr.com/ApiPHP/apis/InsertarCursos.php";
+        var urlEliminar = "https://paginas-web-cr.com/ApiPHP/apis/BorrarCursos.php";
+
+        $(document).ready(function () {
+            cargardatos();
+        });
+        
+        
+        
+        
+
+        function cargardatos(){
+            let tablaresultado = document.querySelector('#tablaresultado');
+            $.ajax({
+                type: "POST", 
+                url: url,
+                dataType: "json",
+                success: function (response){
+                    ajustardatostabla(response.data);
+                },
+                error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+            });
+
+
+
+
+        }
+
+        function ajustardatostabla(datos2){
+        
+        for (const objetoindividual of datos2) {
+          // console.log(objetoindividual.id);
+           //console.log(objetoindividual.nombre);
+           //console.log(objetoindividual.descripcion);
+          // console.log(objetoindividual.tiempo);
+          // console.log(objetoindividual.usuario);
+           //console.log("////////");
+
+           tablaresultado.innerHTML += `
+           
+           <tr class="table-success text-align-center" >
+           <td scope="row">${objetoindividual.id}</td>
+           <td>${objetoindividual.nombre}</td>
+           <td>${objetoindividual.descripcion}</td>
+           <td>${objetoindividual.tiempo}</td>
+           <td>${objetoindividual.usuario}</td>
+           <td>
+           <a name="Eliminar" id="Eliminar" class="btn-get-started"  role="button" data-bs-toggle="modal" data-bs-target="#myModalEliminar" onclick="mostrarModal('${objetoindividual.id}')">Eliminar |</a>
+           <a name="Editar" id="editar" class="btn-get-started"  role="button" data-bs-toggle="modal" data-bs-target="#myModalEditar" onclick="mostrarEditarModal('${objetoindividual.id}','${objetoindividual.nombre}','${objetoindividual.descripcion}','${objetoindividual.tiempo}')">| Editar</a>
+           </td>
+       </tr>`;
+        }
+}
+
+function crearCurso(){
+  $('#myModalCrearCurso').modal('show');
+
+
+}
+
+function crearCurso2(){
+  var datosCrearCurso = {
+            "nombre" :$("#nombreCrearCurso").val(),
+            "descripcion" :$("#descripcionCurso").val(),
+            "tiempo" :$("#tiempoCurso").val(),
+            "usuario" :"Edwin Ceron"
+           
+    
+    
+       }
+
+
+  $.ajax({
+    type: "POST",
+    url: url2,
+    data: JSON.stringify(datosCrearCurso),
+    dataType: "json",
+    success: function (response) {
+      $('#myModalCrearCurso').modal('hide');
+      //location.reload();
+      window.open('index.html#cursos');
+
+    },
+    error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+  });
+}
+function mostrarModal(id){
+    
+    $('#idEliminarCurso').val(id);
+    $('#myModalEliminar').modal('show');
+   
+   
+   
+}
+
+function eliminarCurso(){
+    var datosEliminarCurso = {
+        "id": $('#idEliminarCurso').val()
+    }
+
+
+    $.ajax({
+    type: "POST",
+    url: urlEliminar,
+    data: JSON.stringify(datosEliminarCurso),
+    dataType: "json",
+    success: function (response) {
+      $('#myModalEliminar').modal('hide');
+      //location.reload();
+      window.open('index.html#cursos');
+
+    },
+    error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+  });
+}
+
+  function mostrarEditarModal(id2,nombre2,descripcion,tiempo){
+    //console.log(id2,nombre2,descripcion,tiempo);
+    //document.getElementById('id2').value = id2;
+    //document.getElementById('nombre2').value = nombre2;
+    //document.getElementById('descripcion').value = descripcion;
+    //document.getElementById('tiempo').value = tiempo;
+
+    $('#id2').val(id2);
+    $('#nombre2').val(nombre2);
+    $('#descripcion2').val(descripcion);
+    $('#tiempo2').val(tiempo);
+
+    $('#myModalEditar').modal('show');
+    
+   
+    
+    
+
+}
+
+
+function EditarCurso()
+{
+    
+    var datosCurso = {
+        "id" :$('#id2').val(),
+        "nombre" :$('#nombre2').val() ,
+        "descripcion" :$('#descripcion2').val() ,
+        "tiempo" :$('#tiempo2').val() ,
+        "usuario" :"Edwin Ceron"
+
+
+   }
+   apiurl = "https://paginas-web-cr.com/ApiPHP/apis/ActualizarCursos.php"
+   $.ajax({
+    type: "POST",
+    url: apiurl,
+    data: JSON.stringify(datosCurso),
+    dataType: "json",
+    success: function (response) {
+      $('#myModalEditar').modal('hide');
+      //location.reload();
+      window.open('index.html#cursos');
+
+    },
+    error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+  });
+}
+
+   
+
+
+
+    </script>
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+  </header>
+  <main>
+    <div class="table-responsive container"  data-aos="zoom-out">
+
+        <div class="section-header">
+          <h2>Cursos</h2>
+          <p>Formulario de mantenimiento para cursos</p>
+        </div>
+           <table class="display table 
+           table-border-rounded
+         table-hover
+         table-sm	
+           table-borderless
+           table-dark
+         align-middle">
+               <thead class="table-dark">
+                <caption><br><b> Agregar un nuevo Curso </b>   <button type="button" class="btn btn-primary" onclick="crearCurso()">+</button></caption>
+                   <tr>
+                       <th>ID</th>
+                       <th>Nombre</th>
+                       <th>Descripcion</th>
+                       <th>Tiempo</th>
+                       <th>Usuario</th>
+                       <th>Accion</th>
+                       
+                   </tr>
+                   </thead>
+                   <tbody class="table-group-divider table-success textalign-center" id="tablaresultado">
+                      
+                       
+                   </tbody>
+                   <tfoot>
+                       
+                   </tfoot>
+           </table>
+       </div>
+
+       <div class="modal fade" id="myModalCrearCurso" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitleId2">Crear Curso Nuevo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             
+               
+                <div class="mb-3">
+                  <label for="" class="form-label">Nombre</label>
+                  <input required type="text"
+                    class="form-control" name="nombre2" id="nombreCrearCurso" aria-describedby="helpId" placeholder="Ingrese el nombre">
+                  
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Descripcion</label>
+                    <input required type="text"
+                      class="form-control" name="descripcion" id="descripcionCurso" aria-describedby="helpId" placeholder="Ingrese descripcion">
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="form-label">Tiempo</label>
+                    <input required type="text"
+                      class="form-control" name="tiempo" id="tiempoCurso" aria-describedby="helpId" placeholder="Ingrese Tiempo">
+                    
+                  </div>
+                  
+                
+                  <button type="button" class="btn btn-primary" onclick="crearCurso2()">Crear</button>
+
+
+                  
+        
+           
+      
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+      <!-- Modal Eliminar -->
+       <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+       <div class="modal fade" id="myModalEliminar" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitleId">Eliminando Elemento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <form id="formularioDelcurso">
+               <div class="mb-3">
+                         
+                         <input required type="text"
+                           class="form-control" disabled name="idEliminarCurso" id="idEliminarCurso" aria-describedby="helpId" placeholder="">
+                         
+                       </div>
+                     Esta seguro de Eliminar elemento?
+                   
+                   <div class="modal-footer">
+                    
+                      <button type="button" class="btn btn-danger" onclick="eliminarCurso()" >Eliminar</button>
+                 </form>
+                 </div>
+                   </div>
+          </div>
+        </div>
+
+      </div>
+        <!-- Modal Editar -->
+       <div class="modal fade" id="myModalEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitleId2">Editar Elemento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             
+                <div class="mb-3">
+                  <label for="" class="form-label">ID</label>
+                  <input required type="text"
+                    class="form-control" disabled name="id2" id="id2" aria-describedby="helpId" placeholder="Ingrese el ID">
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Nombre</label>
+                  <input required type="text"
+                    class="form-control" name="nombre2" id="nombre2" aria-describedby="helpId" placeholder="Ingrese el nombre">
+                  
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Descripcion</label>
+                    <input required type="text"
+                      class="form-control" name="descripcion" id="descripcion2" aria-describedby="helpId" placeholder="Ingrese descripcion">
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="form-label">Tiempo</label>
+                    <input required type="text"
+                      class="form-control" name="tiempo" id="tiempo2" aria-describedby="helpId" placeholder="Ingrese Tiempo">
+                    
+                  </div>
+                  
+                
+                  <button type="button" class="btn btn-primary" onclick="EditarCurso()">Editar</button>
+        
+           
+  
+  </div>
+</div>
+</div>
+</div>
+
+
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+  integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+</script>
+</body>
+
+</html>

@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        var urlProfesor = "https://paginas-web-cr.com/ApiPHP/apis/ListaProfesores.php";
+        var urlProfesor2 = "https://paginas-web-cr.com/ApiPHP/apis/InsertarProfesores.php";
+        var urlEliminarProfesor = "https://paginas-web-cr.com/ApiPHP/apis/BorrarProfesores.php";
+
+        $(document).ready(function () {
+            cargardatosProfesor();
+        });
+        
+        
+        
+        
+
+        function cargardatosProfesor(){
+            let tablaProfesor = document.querySelector('#tablaProfesor');
+            $.ajax({
+                type: "POST", 
+                url: urlProfesor,
+                dataType: "json",
+                success: function (response){
+                    ajustardatostablaProfesor(response.data);
+                },
+                error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+            });
+
+
+
+
+        }
+
+        function ajustardatostablaProfesor(datos2){
+        
+        for (const objetoindividual3 of datos2) {
+          // console.log(objetoindividual.id);
+           //console.log(objetoindividual.nombre);
+           //console.log(objetoindividual.descripcion);
+          // console.log(objetoindividual.tiempo);
+          // console.log(objetoindividual.usuario);
+           //console.log("////////");
+
+           tablaProfesor.innerHTML += `
+           <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+           <tr class="table-success text-align-center " >
+           <td scope="row">${objetoindividual3.id}</td>
+           <td>${objetoindividual3.cedula}</td>
+           <td>${objetoindividual3.correoelectronico}</td>
+           <td>${objetoindividual3.telefono}</td>
+           <td>${objetoindividual3.telefonocelular}</td>
+           <td>${objetoindividual3.fechanacimiento}</td>
+           <td>${objetoindividual3.sexo}</td>
+           <td>${objetoindividual3.direccion}</td>
+           <td>${objetoindividual3.nombre}</td>
+           <td>${objetoindividual3.apellidopaterno}</td>
+           <td>${objetoindividual3.apellidomaterno}</td>
+           <td>${objetoindividual3.nacionalidad}</td>
+           <td>${objetoindividual3.idCarreras}</td>
+           <td>${objetoindividual3.usuario}</td>
+           <td>
+           <a name="Eliminar" id="Eliminar" class="btn-get-started"  role="button" data-target="#myModalEliminarProfesor" onclick="mostrarModalProfesor('${objetoindividual3.id}')">Eliminar</a>
+           <a name="Editar" id="editar" class="btn-get-started"  role="button" data-target="#myModalEditarProfesor" onclick="mostrarEditarModalProfesor('${objetoindividual3.id}','${objetoindividual3.cedula}','${objetoindividual3.correoelectronico}','${objetoindividual3.telefono}','${objetoindividual3.telefonocelular}','${objetoindividual3.fechanacimiento}','${objetoindividual3.sexo}','${objetoindividual3.direccion}','${objetoindividual3.nombre}','${objetoindividual3.apellidopaterno}','${objetoindividual3.apellidomaterno}','${objetoindividual3.nacionalidad}','${objetoindividual3.idCarreras}')">Editar</a>
+           </td>
+       </tr>`;
+        }
+}
+
+function crearProfesor(){
+  $('#myModalCrearProfesor').modal('show');
+
+
+}
+
+function CrearNuevoProfesor(){
+        var datosCrearProfesor = {
+            
+            "cedula" :$('#cedulaProfesor').val() ,
+            "correoelectronico" :$('#correoelectronicoCrearProfesor').val() ,
+            "telefono" :$('#telefonoCrearProfesor').val() ,
+            "telefonocelular" :$('#telefonocelularCrearProfesor').val() ,
+            "fechanacimiento" :$('#fechanacimientoCrearProfesor').val() ,
+            "sexo" :$('#sexoCrearProfesor').val() ,
+            "direccion" :$('#direccionCrearProfesor').val() ,
+            "nombre" :$('#nombreCrearProfesor').val() ,
+            "apellidopaterno" :$('#apellidopaternoCrearProfesor').val() ,
+            "apellidomaterno" :$('#apellidomaternoCrearProfesor').val() ,
+            "nacionalidad" :$('#nacionalidadCrearProfesor').val() ,
+            "idCarreras" :$('#idCarrerasCrearProfesor').val() ,
+            "usuario" :"Edwin Ceron"
+           
+    
+    
+       }
+
+
+  $.ajax({
+    type: "POST",
+    url: urlProfesor2,
+    data: JSON.stringify(datosCrearProfesor),
+    dataType: "json",
+    success: function (response) {
+      $('#myModalCrearProfesor').modal('hide');
+      //location.reload();
+     window.open('index.html#profesor');
+
+    },
+    error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+  });
+}
+function mostrarModalProfesor(id){
+    
+    $('#idEliminarProfesor').val(id);
+    $('#myModalEliminarProfesor').modal('show');
+   
+   
+   
+}
+
+function eliminarProfesor(){
+    var datosEliminarProfesor = {
+        "id": $('#idEliminarProfesor').val()
+    }
+
+
+    $.ajax({
+    type: "POST",
+    url: urlEliminarProfesor,
+    data: JSON.stringify(datosEliminarProfesor),
+    dataType: "json",
+    success: function (response) {
+      $('#myModalEliminarProfesor').modal('hide');
+      //location.reload();
+     window.open('index.html#profesor');
+
+    },
+    error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+  });
+}
+
+  function mostrarEditarModalProfesor(id,cedula,correoelectronico,telefono,telefonocelular,fechanacimiento,sexo,direccion,nombre,apellidopaterno,apellidomaterno,nacionalidad,idCarreras){
+    $('#idProfesor').val(id);
+    $('#cedulaProfesor').val(cedula);
+    $('#correoelectronicoProfesor').val(correoelectronico);
+    $('#telefonoProfesor').val(telefono);
+    $('#telefonocelularProfesor').val(telefonocelular);
+    $('#fechanacimientoProfesor').val(fechanacimiento);
+    $('#sexoProfesor').val(sexo);
+    $('#direccionProfesor').val(direccion);
+    $('#nombreProfesor').val(nombre);
+    $('#apellidopaternoProfesor').val(apellidopaterno);
+    $('#apellidomaternoProfesor').val(apellidomaterno);
+    $('#nacionalidadProfesor').val(nacionalidad);
+    $('#idCarrerasProfesor').val(idCarreras);
+
+      
+    $('#myModalEditarProfesor').modal('show');
+    
+   
+    
+    
+
+}
+
+
+function EditarJqProfesor()
+{
+    
+    var datosProfesor = {
+
+     "id" :$('#idProfesor').val(),
+     "cedula" :$('#cedulaProfesor').val(),
+     "correoelectronico" :$('#correoelectronicoProfesor').val(),
+     "telefono" :$('#telefonoProfesor').val(),
+     "telefonocelular" :$('#telefonocelularProfesor').val(),
+     "fechanacimiento" :$('#fechanacimientoProfesor').val(),
+     "sexo" :$('#sexoProfesor').val(),
+     "direccion" :$('#direccionProfesor').val(),
+     "nombre" :$('#nombreProfesor').val(),
+     "apellidopaterno" :$('#apellidopaternoProfesor').val(),
+     "apellidomaterno" :$('#apellidomaternoProfesor').val(),
+     "nacionalidad" :$('#nacionalidadProfesor').val(),
+     "idCarreras" :$('#idCarrerasProfesor').val(),
+     "usuario" :"Edwin Ceron"
+      
+    
+           
+
+
+   }
+   var apiurlProfesor = "https://paginas-web-cr.com/ApiPHP/apis/ActualizarProfesores.php"
+   $.ajax({
+    type: "POST",
+    url: apiurlProfesor,
+    data: JSON.stringify(datosProfesor),
+    dataType: "json",
+    success: function (response) {
+      $('#myModalEditarProfesor').modal('hide');
+     //location.reload();
+     window.open('index.html#profesor');
+
+    },
+    error: function (xhr, textStatus, errorThrown){
+                    console.log("Error", errorThrown);
+                }
+  });
+}
+
+   
+
+
+
+    </script>
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+  </header>
+  <main>
+    <div class="table-responsive-xl container"  data-aos="zoom-out">
+
+        <div class="section-header">
+          <h2>Profesor</h2>
+          <p>Formulario de mantenimiento para Profesor</p>
+        </div>
+           <table class="display table 
+           table-border-rounded
+         table-hover
+         table-sm	
+           table-borderless
+           table-dark
+         align-middle">
+               <thead class="table-dark">
+                <caption><br><b> Agregar un nuevo Profesor </b>   <button type="button" class="btn btn-primary" onclick="crearProfesor()">+</button></caption>
+                   <tr>
+                    <th>ID</th>
+                    <th>Cédula</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Celular</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Sexo</th>
+                    <th>Dirección</th>
+                            <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                            <th>Nacionalidad</th>
+                            <th>Carrera</th>
+                            <th>Usuario</th>
+                    <th>Acción</th>
+                       
+                   </tr>
+                   </thead>
+                   <tbody class="table-group-divider table-success textalign-center" id="tablaProfesor">
+                      
+                       
+                   </tbody>
+                   <tfoot>
+                       
+                   </tfoot>
+           </table>
+       </div>
+
+       <!-- Modal Crear -->
+<div class="modal fade" id="myModalCrearProfesor" tabindex="-1" data-bs-backdrop="static" data-bs-config={backdrop:true} data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Crear nuevo Profesor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+                 
+           <div class="mb-3">
+            <label for="" class="form-label">Cédula</label>
+            <input required type="number"
+              class="form-control" name="cedula" id="cedulaCrearProfesor" aria-describedby="helpId" placeholder="Ingrese su cédula">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Correo Electrónico</label>
+            <input required type="email"
+              class="form-control" name="correoelectronico" id="correoelectronicoCrearProfesor" aria-describedby="helpId" placeholder="Ingrese su correo electrónico">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Teléfono</label>
+            <input required type="number"
+              class="form-control" name="telefono" id="telefonoCrearProfesor" aria-describedby="helpId" placeholder="Ingrese su teléfono">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Celular</label>
+            <input required type="number"
+              class="form-control" name="telefonocelular" id="telefonocelularCrearProfesor" aria-describedby="helpId" placeholder="Ingrese su celular">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Fecha de nacimiento</label>
+            <input required type="date"
+              class="form-control" name="fechanacimiento" id="fechanacimientoCrearProfesor" aria-describedby="helpId" placeholder="Ingrese su fecha de nacimiento">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Sexo</label>
+            <input required type="text"
+              class="form-control" name="sexo" id="sexoCrearProfesor" aria-describedby="helpId" placeholder="Ingrese su sexo">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Dirección</label>
+            <input required type="text"
+              class="form-control" name="direccion" id="direccionCrearProfesor" aria-describedby="helpId" placeholder="Ingrese su dirección">
+            
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Nombre</label>
+            <input required type="text"
+              class="form-control" name="nombre" id="nombreCrearProfesor" aria-describedby="helpId" placeholder="Ingrese el nombre">
+            
+          </div>
+          <div class="mb-3">
+              <label for="" class="form-label">Primer Apellido</label>
+              <input required type="text"
+                class="form-control" name="apellidopaterno" id="apellidopaternoCrearProfesor" aria-describedby="helpId" placeholder="Ingrese su primer apellido">
+              
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Segundo Apellido</label>
+              <input required type="text"
+                class="form-control" name="apellidomaterno" id="apellidomaternoCrearProfesor" aria-describedby="helpId" placeholder="Ingrese segundoapellido">
+              
+            </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Nacionalidad</label>
+            <input required type="text"
+              class="form-control" name="nacionalidad" id="nacionalidadCrearProfesor" aria-describedby="helpId" placeholder="Ingrese su nacionalidad">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">ID Carrera</label>
+            <input required type="text"
+              class="form-control" name="idCarreras" id="idCarrerasCrearProfesor" aria-describedby="helpId" placeholder="Ingrese su cédula">
+            
+          </div>
+           
+            
+          
+            <button type="button" class="btn btn-primary" onclick="CrearNuevoProfesor()">Enviar</button>
+  
+      
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+
+      <!-- Modal Eliminar -->
+       <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+       <div class="modal fade" id="myModalEliminarProfesor" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitleId">Eliminando Elemento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <form id="formularioDelcurso">
+               <div class="mb-3">
+                         
+                         <input required type="text"
+                           class="form-control" disabled name="idEliminarProfesor" id="idEliminarProfesor" aria-describedby="helpId" placeholder="">
+                         
+                       </div>
+                     Esta seguro de Eliminar elemento?
+                   
+                   <div class="modal-footer">
+                    
+                      <button type="button" class="btn btn-danger" onclick="eliminarProfesor()" >Eliminar</button>
+                 </form>
+                 </div>
+                   </div>
+          </div>
+        </div>
+
+      </div>
+        <!-- Modal Editar -->
+<div class="modal fade" id="myModalEditarProfesor" tabindex="-1" data-bs-backdrop="static" data-bs-config={backdrop:true} data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Editar Elemento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formularioProfesor">
+          <div class="mb-3">
+            <label for="" class="form-label">ID</label>
+            <input required type="text"
+              class="form-control" disabled name="id" id="idProfesor" aria-describedby="helpId" placeholder="Ingrese el ID">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Cédula</label>
+            <input required type="number"
+              class="form-control" name="cedula" id="cedulaProfesor" aria-describedby="helpId" placeholder="Ingrese su cédula">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Correo Electrónico</label>
+            <input required type="email"
+              class="form-control" name="correoelectronico" id="correoelectronicoProfesor" aria-describedby="helpId" placeholder="Ingrese su correo electrónico">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Teléfono</label>
+            <input required type="number"
+              class="form-control" name="telefono" id="telefonoProfesor" aria-describedby="helpId" placeholder="Ingrese su teléfono">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Celular</label>
+            <input required type="number"
+              class="form-control" name="telefonocelular" id="telefonocelularProfesor" aria-describedby="helpId" placeholder="Ingrese su celular">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Fecha de nacimiento</label>
+            <input required type="date"
+              class="form-control" name="fechanacimiento" id="fechanacimientoProfesor" aria-describedby="helpId" placeholder="Ingrese su fecha de nacimiento">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Sexo</label>
+            <input required type="text"
+              class="form-control" name="sexo" id="sexoProfesor" aria-describedby="helpId" placeholder="Ingrese su sexo">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Dirección</label>
+            <input required type="text"
+              class="form-control" name="direccion" id="direccionProfesor" aria-describedby="helpId" placeholder="Ingrese su dirección">
+            
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Nombre</label>
+            <input required type="text"
+              class="form-control" name="nombre" id="nombreProfesor" aria-describedby="helpId" placeholder="Ingrese el nombre">
+            
+          </div>
+          <div class="mb-3">
+              <label for="" class="form-label">Primer Apellido</label>
+              <input required type="text"
+                class="form-control" name="apellidopaterno" id="apellidopaternoProfesor" aria-describedby="helpId" placeholder="Ingrese su primer apellido">
+              
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Segundo Apellido</label>
+              <input required type="text"
+                class="form-control" name="apellidomaterno" id="apellidomaternoProfesor" aria-describedby="helpId" placeholder="Ingrese segundoapellido">
+              
+            </div>
+           <div class="mb-3">
+            <label for="" class="form-label">Nacionalidad</label>
+            <input required type="text"
+              class="form-control" name="nacionalidad" id="nacionalidadProfesor" aria-describedby="helpId" placeholder="Ingrese su nacionalidad">
+            
+          </div>
+           <div class="mb-3">
+            <label for="" class="form-label">ID Carrera</label>
+            <input required type="text"
+              class="form-control" name="idCarreras" id="idCarrerasProfesor" aria-describedby="helpId" placeholder="Ingrese su cédula">
+            
+          </div>
+           
+            
+          
+            <button type="button" class="btn btn-primary" onclick="EditarJqProfesor()">Enviar</button>
+  
+      </form>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+  integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+</script>
+ 
+</body>
+
+</html>
