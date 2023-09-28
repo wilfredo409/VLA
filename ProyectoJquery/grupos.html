@@ -88,7 +88,8 @@ function crearGrupo2(){
     dataType: "json",
     success: function (response) {
       $('#myModalCrearGrupo').modal('hide');
-      location.reload();
+      //location.reload();
+      window.open('index.html#grupos');
 
     },
     error: function (xhr, textStatus, errorThrown){
@@ -118,7 +119,8 @@ function eliminarGrupo(){
     dataType: "json",
     success: function (response) {
       $('#myModalEliminarGrupo').modal('hide');
-      location.reload();
+      //location.reload();
+      window.open('index.html#grupos');
 
     },
     error: function (xhr, textStatus, errorThrown){
@@ -160,7 +162,8 @@ function EditarGrupo()
     dataType: "json",
     success: function (response) {
       $('#myModalEditarGrupo').modal('hide');
-      location.reload();
+      //location.reload();
+      window.open('index.html#grupos');
 
     },
     error: function (xhr, textStatus, errorThrown){
