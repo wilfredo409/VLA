@@ -169,10 +169,10 @@ function EditarCurso()
 
 
    }
-   apiurl = "https://paginas-web-cr.com/ApiPHP/apis/ActualizarCursos.php"
+   apiurlCurso = "https://paginas-web-cr.com/ApiPHP/apis/ActualizarCursos.php"
    $.ajax({
     type: "POST",
-    url: apiurl,
+    url: apiurlCurso,
     data: JSON.stringify(datosCurso),
     dataType: "json",
     success: function (response) {
@@ -288,7 +288,7 @@ function EditarCurso()
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               <form id="formularioDelcurso">
+               <form id="formularioDelcurso2">
                <div class="mb-3">
                          
                          <input required type="text"
