@@ -1,12 +1,23 @@
 
-const titulo = "Semana 18";
-console.log(titulo);
-console.log(typeof titulo);
+console.log("Semana 18 Typescript");
 
-const numerocualquiera = 10;
-console.log(numerocualquiera);
-console.log(typeof numerocualquiera);
+let nombre: string = "Clase miercoles";
 
-const bolean = false;
-console.log(bolean);
-console.log(typeof bolean);
+nombre = "90";
+
+//Tipos de datos
+
+let texto: string = "Mario";
+let numero: number = 7600000;
+let booleano: boolean = true;
+
+//test (numero);
+
+
+function test(nombre: string){
+    return "Hola" + nombre;
+}
+
+
+let carros: string[] = ['bmw', 'nissan', 'toyota'];
+
