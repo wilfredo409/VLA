@@ -7,3 +7,9 @@ export class Cursos {
 
 
 }
+
+/*export interface CursoResponse{
+    code: number;
+    message: string;
+    data: Cursos[];
+}*/
