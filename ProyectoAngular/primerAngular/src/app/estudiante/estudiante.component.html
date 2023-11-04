@@ -1,1 +1,55 @@
-<p>estudiante works!</p>
+<div class="container">
+    <h1>Mantenimiento de Estudiante </h1>
+    <div class="">
+      <table class="display table 
+      table-border-rounded
+    table-hover
+    table-xl	
+      table-borderless
+      table-dark
+    align-middle">
+        <thead class="table-light">
+          <caption>Tabla Estudiante</caption>
+          <tr>
+            <th>Id</th>
+            <th>cedula</th>
+            <th>correoelectronico</th>
+            <th>telefono</th>
+            <th>telefonocelular</th>
+            <th>fechanacimiento</th>
+            <th>sexo</th>
+            <th>direccion</th>
+            <th>nombre</th>
+            <th>apellidopaterno</th>
+            <th>apellidomaterno</th>
+            <th>nacionalidad</th>
+            <th>idCarreras</th>
+            <th>Usuario</th>
+          </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr class="table-primary" *ngFor="let item of arregloDatos" >
+              <td scope="row" >{{ item.id}} </td>
+              <td>{{item.cedula}}</td>
+              <td>{{item.correoelectronico}}</td>
+              <td>{{item.telefono}}</td>
+              <td>{{item.telefonocelular}}</td>
+              <td>{{item.fechanacimiento}}</td>
+              <td>{{item.sexo}}</td>
+              <td>{{item.direccion}}</td>
+              <td>{{item.nombre}}</td>
+              <td>{{item.apellidopaterno}}</td>
+              <td>{{item.apellidomaterno}}</td>
+              <td>{{item.nacionalidad}}</td>
+              <td>{{item.idCarreras}}</td>
+              <td>{{item.usuario}}</td>
+            </tr>
+            
+          </tbody>
+          <tfoot>
+            
+          </tfoot>
+      </table>
+    </div>
+    
+  </div>
