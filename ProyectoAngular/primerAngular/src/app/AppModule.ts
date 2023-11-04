@@ -6,6 +6,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { GrupoComponent } from './grupo/grupo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EstudianteComponent } from './estudiante/estudiante.component';
+import { ProfesorComponent } from './profesor/profesor.component';
+import { CursoComponent } from './curso/curso.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { EstudianteComponent } from './estudiante/estudiante.component';
     AppComponent,
     NavbarComponent,
     GrupoComponent,
-    EstudianteComponent
+    EstudianteComponent,
+    ProfesorComponent,
+    CursoComponent
     
   ],
   imports: [
