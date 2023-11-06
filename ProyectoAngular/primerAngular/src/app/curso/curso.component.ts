@@ -13,6 +13,24 @@ export class CursoComponent implements OnInit {
   //Atributos
   title = 'primerAngular';
 
+  selectedCursos: Cursos = new Cursos();
+  selectedCurso: Cursos ={
+    id: '',
+    nombre: '',
+    descripcion: '',
+    tiempo: '',
+    usuario: '',
+  };
+
+  modeloCurso: Cursos = new Cursos();
+
+
+  addAndEdit(){
+    this.modeloCurso.usuario = 'Edwin Ceron';
+    this.enviarSolicitudPost();
+  }
+  
+
  // arregloDatos: Cursos[] = [
  //   {id:"1", nombre : "html5", descripcion: "111", tiempo: "1", usuario:"Edwin"},
   //  {id:"2", nombre : "css3", descripcion: "222", tiempo: "222", usuario:"Edwin 2"},
@@ -53,5 +71,34 @@ ngOnInit(): void {
 
 }
 
+enviarSolicitudPost(){
+  const url = "https://paginas-web-cr.com/ApiPHP/apis/InsertarCursos.php";
+//Datyos que deseas enviar en la solicitud post
+const data = {
+  parametro1: 'valor1',
+  parametro2: 'valor2'
+  // Agrega mas datos segun tus necesidades
+};
+
+const headers = new HttpHeaders({
+  'Content-Type': 'aplication/json' //Ajusta el tipo de contenido segun requerimientos
+});
+
+//Realiza la solicitud POST
+this.http.post(url, data, {headers}).subscribe(
+  (response) => {
+    //Maneja respuesta de la API
+    console.log('Respuesta de la API: ', response);
+    this.obtenerDatos();
+  },
+  (error) => {
+   //Maneja los errores de la solicitud
+  }
+  
+);
+
+
+
+}
 
 }
