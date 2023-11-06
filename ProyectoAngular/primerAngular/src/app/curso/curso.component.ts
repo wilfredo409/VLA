@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Cursos } from './models/cursos';
+import { Cursos } from '../models/cursos';
 // import importa librerias o clases
 import {HttpClient, HttpHeaders}from '@angular/common/http';
-import { Respuestacursos } from './models/respuestacursos';
+import { Respuestacursos } from '../models/respuestacursos';
 
 @Component({
   selector: 'app-curso',
@@ -85,14 +85,14 @@ const headers = new HttpHeaders({
 });
 
 //Realiza la solicitud POST
-this.http.post(url, data, {headers}).subscribe(
+this.http.post(url, this.modeloCurso, {headers}).subscribe(
   (response) => {
     //Maneja respuesta de la API
     console.log('Respuesta de la API: ', response);
     this.obtenerDatos();
-  },
+  }, 
   (error) => {
-   //Maneja los errores de la solicitud
+    console.error('Error en la carga de datos', error);
   }
   
 );

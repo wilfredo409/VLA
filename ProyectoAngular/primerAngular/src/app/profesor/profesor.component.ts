@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Profesor } from './models/profesor';
+import { Profesor } from '../models/profesor';
 // import importa librerias o clases
 import {HttpClient, HttpHeaders}from '@angular/common/http';
-import { Respuestaprofesor } from './models/respuestaprofesor';
+import { Respuestaprofesor } from '../models/respuestaprofesor';
 
 @Component({
   selector: 'app-profesor',

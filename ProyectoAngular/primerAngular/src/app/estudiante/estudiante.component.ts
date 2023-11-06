@@ -1,9 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Estudiante } from './models/estudiante';
+import { Estudiante } from '../models/estudiante';
 // import importa librerias o clases
 import {HttpClient, HttpHeaders}from '@angular/common/http';
-import { Respuestaestudiante } from './models/respuestaestudiante';
+import { Respuestaestudiante } from '../models/respuestaestudiante';
 
 
 @Component({

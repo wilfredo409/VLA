@@ -3,29 +3,35 @@
 
     <div class="container">
       <h2>Mantenimiento de datos</h2>
+
+
+
+[(ngModel)]="biding"
+
+
       <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
-        <input type="text"
+        <input type="text" [(ngModel)]="modeloCurso.nombre"
           class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
         <small id="helpId" class="form-text text-muted">Nombre</small>
       </div>
 
       <div class="mb-3">
         <label for="" class="form-label">Descripcion</label>
-        <input type="text"
+        <input type="text" [(ngModel)]="modeloCurso.descripcion"
           class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
         <small id="helpId" class="form-text text-muted">Descripcion</small>
       </div>
 
       <div class="mb-3">
         <label for="" class="form-label">Tiempo</label>
-        <input type="text"
+        <input type="text" [(ngModel)]="modeloCurso.tiempo"
           class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
         <small id="helpId" class="form-text text-muted">Tiempo</small>
       </div>
       <div class="mb-3">
         <div class="d-grid gap-2">
-          <button type="button" name="" id="" class="btn btn-primary">Guardar</button>
+          <button (click)="addAndEdit()" type="button" name="" id="" class="btn btn-primary" >Guardar</button>
         </div>
 
       </div>

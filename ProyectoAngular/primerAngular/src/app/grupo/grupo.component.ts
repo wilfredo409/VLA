@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 
 
-import { grupo } from './models/grupo';
+import { grupo } from '../models/grupo';
 // import importa librerias o clases
 import {HttpClient, HttpHeaders}from '@angular/common/http';
-import { Respuestagrupo } from './models/respuestagrupo';
+import { Respuestagrupo } from '../models/respuestagrupo';
 @Component({
   selector: 'app-grupo',
   templateUrl: './grupo.component.html',
