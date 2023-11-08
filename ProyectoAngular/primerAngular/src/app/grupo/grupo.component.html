@@ -1,4 +1,33 @@
 <div class="container">
+
+  <h1>Mantenimiento de Grupos</h1>
+            <br>
+            <div class="container">
+              <h2>Mantenimiento de datos</h2>
+        
+        
+        
+        
+              <form action="">
+        
+              <div class="mb-3">
+                <label for="" class="form-label">Nombre</label>
+                <input required type="text" [(ngModel)]="modeloGrupo.nombre"
+                  class="form-control" name="nombre" id="nombreGrupo" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted">Nombre</small>
+              </div>
+        
+             
+              <div class="mb-3">
+                <div class="d-grid gap-2">
+                  <button (click)="addAndEditGrupo()" type="button" name="" id="" class="btn btn-primary" >Guardar</button>
+                  <button type="reset" class="btn btn-danger">Reset</button>
+                </div>
+        
+              </div>
+            
+            </form>
+            </div>
     
     <div class="table-responsive">
       <table class="table table-striped
@@ -7,7 +36,8 @@
       table-primary
       align-middle">
         <thead class="table-light">
-            <h1>Mantenimiento de Grupos</h1>
+            
+        
             <br>
           <caption>Tabla Grupo</caption>
           <tr>

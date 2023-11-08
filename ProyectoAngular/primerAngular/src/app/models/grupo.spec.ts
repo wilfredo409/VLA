@@ -1,6 +1,6 @@
 import { grupo } from './grupo';
 
-describe('Cursos', () => {
+describe('Grupo', () => {
   it('should create an instance', () => {
     expect(new grupo()).toBeTruthy();
   });

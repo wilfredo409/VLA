@@ -15,6 +15,22 @@ export class GrupoComponent  implements OnInit {
   //Atributos
   title = 'primerAngular';
 
+  selectedGrupos: grupo = new grupo();
+  selectedGrupo: grupo ={
+    id: '',
+    nombre: '',
+    
+  };
+
+
+  modeloGrupo: grupo = new grupo();
+
+  addAndEditGrupo(){
+    
+    this.enviarSolicitudPostGrupo();
+  }
+
+
  // arregloDatos: Cursos[] = [
  //   {id:"1", nombre : "html5", descripcion: "111", tiempo: "1", usuario:"Edwin"},
   //  {id:"2", nombre : "css3", descripcion: "222", tiempo: "222", usuario:"Edwin 2"},
@@ -26,7 +42,7 @@ export class GrupoComponent  implements OnInit {
   arregloDatos2: grupo[] = [];
 
 constructor(private http: HttpClient){}
-obtenerDatos(){
+obtenerDatosGrupo(){
   const url = "https://paginas-web-cr.com/ApiPHP/apis/ListaGrupo.php";
 
   /*
@@ -51,7 +67,38 @@ this.http.get<Respuestagrupo>(url).subscribe(
 
 ngOnInit(): void {
 
-  this.obtenerDatos();
+  this.obtenerDatosGrupo();
+
+}
+
+enviarSolicitudPostGrupo(){
+  const url = "https://paginas-web-cr.com/ApiPHP/apis/InsertarGrupo.php";
+//Datyos que deseas enviar en la solicitud post
+const data = {
+  parametro1: 'valor1',
+ 
+  // Agrega mas datos segun tus necesidades
+};
+
+const headers = new HttpHeaders({
+  'Content-Type': 'aplication/json' //Ajusta el tipo de contenido segun requerimientos
+});
+
+//Realiza la solicitud POST
+this.http.post(url, this.modeloGrupo, {headers}).subscribe(
+  (response) => {
+    //Maneja respuesta de la API
+    console.log('Respuesta de la API: ', response, );
+   
+    this.obtenerDatosGrupo();
+  }, 
+  (error) => {
+    console.error('Error en la carga de datos', error);
+  }
+  
+);
+
+
 
 }
 
