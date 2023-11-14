@@ -12,7 +12,7 @@ import { Respuestacursos } from '../models/respuestacursos';
 export class CursoComponent implements OnInit {
   //Atributos
   title = 'primerAngular';
-
+  textoboton = "Guardar";
   selectedCursos: Cursos = new Cursos();
   selectedCurso: Cursos ={
     id: '',
@@ -27,9 +27,34 @@ export class CursoComponent implements OnInit {
 
   addAndEdit(){
     this.modeloCurso.usuario = 'Edwin Ceron';
-    this.enviarSolicitudPost();
+    if (this.modeloCurso.id == ""){
+      this.enviarSolicitudPost()
+    }else{
+    this.enviarSolicitudPostEditar();
   }
+  }
+  eliminar(item: Cursos){
+    this.modeloCurso = item;
+    
+    this.enviarSolicitudPostEliminar();
+    
+    }
+  limpiar(){
+    this.modeloCurso = new Cursos();
+    this.textoboton = 'Guardar';
+    
+  }
+
+cargaredicion(item: Cursos){
+  this.textoboton = "Modificar";
+  this.modeloCurso = item;
+  console.log(item);
   
+}
+
+
+  
+
 
  // arregloDatos: Cursos[] = [
  //   {id:"1", nombre : "html5", descripcion: "111", tiempo: "1", usuario:"Edwin"},
@@ -70,6 +95,69 @@ ngOnInit(): void {
   this.obtenerDatos();
 
 }
+
+enviarSolicitudPostEditar(){
+
+  const url = "https://paginas-web-cr.com/ApiPHP/apis/ActualizarCursos.php";
+//Datyos que deseas enviar en la solicitud post
+const data = {
+  parametro1: 'valor1',
+  parametro2: 'valor2'
+  // Agrega mas datos segun tus necesidades
+};
+
+const headers = new HttpHeaders({
+  'Content-Type': 'aplication/json' //Ajusta el tipo de contenido segun requerimientos
+});
+
+//Realiza la solicitud POST
+this.http.post(url, this.modeloCurso, {headers}).subscribe(
+  (response) => {
+    //Maneja respuesta de la API
+    console.log('Respuesta de la API: ', response);
+    this.obtenerDatos();
+  }, 
+  (error) => {
+    console.error('Error en la carga de datos', error);
+  }
+  
+);
+
+this.textoboton = 'Guardar';
+this.modeloCurso = new Cursos();
+}
+
+
+
+enviarSolicitudPostEliminar(){
+  const url = "https://paginas-web-cr.com/ApiPHP/apis/BorrarCursos.php";
+//Datyos que deseas enviar en la solicitud post
+const data = {
+  id: this.modeloCurso.id,
+};
+
+const headers = new HttpHeaders({
+  'Content-Type': 'aplication/json' //Ajusta el tipo de contenido segun requerimientos
+});
+
+//Realiza la solicitud POST
+this.http.post(url, data, {headers}).subscribe(
+  (response) => {
+    //Maneja respuesta de la API
+    console.log('Respuesta de la API: ', response);
+    this.obtenerDatos();
+  }, 
+  (error) => {
+    console.error('Error en la carga de datos', error);
+  }
+  
+);
+
+
+
+}
+
+
 
 enviarSolicitudPost(){
   const url = "https://paginas-web-cr.com/ApiPHP/apis/InsertarCursos.php";

@@ -15,13 +15,13 @@
                 <input required type="text" [(ngModel)]="modeloGrupo.nombre"
                   class="form-control" name="nombre" id="nombreGrupo" aria-describedby="helpId" placeholder="">
                 <small id="helpId" class="form-text text-muted">Nombre</small>
-              </div>
+              </div>|
         
              
               <div class="mb-3">
                 <div class="d-grid gap-2">
-                  <button (click)="addAndEditGrupo()" type="button" name="" id="" class="btn btn-primary" >Guardar</button>
-                  <button type="reset" class="btn btn-danger">Reset</button>
+                  <button (click)="addAndEditGrupo()" type="button" name="" id="GuardarGrupo" class="btn btn-primary" >{{botoneditar}}</button>
+                  <button type="button" class="btn btn-danger" (click)="limpiar()">Reset</button>
                 </div>
         
               </div>
@@ -43,14 +43,17 @@
           <tr>
             <th>Id</th>
             <th>Nombre</th>
+            <th>Acción</th>
            
           </tr>
           </thead>
           <tbody class="table-group-divider">
-            <tr class="table-primary" *ngFor="let item of arregloDatos2" >
+            <tr class="table-primary" *ngFor="let item of arregloDatos2" (click)="cargaredicion(item)">
               <td scope="row" >{{ item.id }}</td>
               <td>{{item.nombre}}</td>
-             
+              <td><div class="d-grid gap-2">
+                <button type="button" name="" id="" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
+              </div></td>
             </tr>
             
           </tbody>

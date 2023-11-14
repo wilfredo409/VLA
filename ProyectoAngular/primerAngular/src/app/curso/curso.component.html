@@ -6,7 +6,7 @@
 
 
 
-[(ngModel)]="biding"
+
       <form action="" id="frmCursos"  >
 
       <div class="mb-3">
@@ -31,8 +31,8 @@
       </div>
       <div class="mb-3">
         <div class="d-grid gap-2">
-          <button (click)="addAndEdit()" type="button" name="" id="" class="btn btn-primary" >Guardar</button>
-          <button type="reset" class="btn btn-danger">Reset</button>
+          <button (click)="addAndEdit()" type="button" name="CursoGuardar" id="CursoGuardar" class="btn btn-primary" >{{textoboton}}</button>
+          <button (click)="limpiar()" type="button" class="btn btn-danger" name="ResetCurso" id="ResetCurso" >Reset</button>
         </div>
 
       </div>
@@ -55,15 +55,19 @@
             <th>Descripcion</th>
             <th>Tiempo</th>
             <th>Usuario</th>
+            <th>Acción</th>
           </tr>
           </thead>
           <tbody class="table-group-divider">
-            <tr class="table-primary" *ngFor="let item of arregloDatos" >
+            <tr class="table-primary" *ngFor="let item of arregloDatos" (click)="cargaredicion(item)">
               <td scope="row" >{{ item.id }}</td>
               <td>{{item.nombre}}</td>
               <td>{{item.descripcion}}</td>
               <td>{{item.tiempo}}</td>
               <td>{{item.usuario}}</td>
+              <td><div class="d-grid gap-2">
+                <button type="button" name="" id="" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
+              </div></td>
             </tr>
             
           </tbody>

@@ -14,6 +14,7 @@ import { Respuestagrupo } from '../models/respuestagrupo';
 export class GrupoComponent  implements OnInit {
   //Atributos
   title = 'primerAngular';
+  botoneditar = 'Guardar';
 
   selectedGrupos: grupo = new grupo();
   selectedGrupo: grupo ={
@@ -27,9 +28,35 @@ export class GrupoComponent  implements OnInit {
 
   addAndEditGrupo(){
     
-    this.enviarSolicitudPostGrupo();
+    if (this.modeloGrupo.id == ""){
+      this.enviarSolicitudPostGrupo()
+    }else{
+      this.enviarSolicitudPostGrupoEditar();
   }
 
+    
+    
+  }
+
+  cargaredicion(item: grupo){
+    this.botoneditar = "Modificar";
+    this.modeloGrupo = item;
+    console.log(item);
+    
+  }
+
+  limpiar(){
+    this.modeloGrupo = new grupo();
+    this.botoneditar = 'Guardar';
+    
+  }
+
+  eliminar(item: grupo){
+    this.modeloGrupo = item;
+    
+    this.enviarSolicitudPostEliminar();
+    
+    }
 
  // arregloDatos: Cursos[] = [
  //   {id:"1", nombre : "html5", descripcion: "111", tiempo: "1", usuario:"Edwin"},
@@ -68,6 +95,69 @@ this.http.get<Respuestagrupo>(url).subscribe(
 ngOnInit(): void {
 
   this.obtenerDatosGrupo();
+
+}
+
+enviarSolicitudPostGrupoEditar(){
+
+  const url = "https://paginas-web-cr.com/ApiPHP/apis/ActualizarGrupo.php";
+  //Datyos que deseas enviar en la solicitud post
+  const data = {
+    parametro1: 'valor1',
+   
+    // Agrega mas datos segun tus necesidades
+  };
+  
+  const headers = new HttpHeaders({
+    'Content-Type': 'aplication/json' //Ajusta el tipo de contenido segun requerimientos
+  });
+  
+  //Realiza la solicitud POST
+  this.http.post(url, this.modeloGrupo, {headers}).subscribe(
+    (response) => {
+      //Maneja respuesta de la API
+      console.log('Respuesta de la API: ', response, );
+     
+      this.obtenerDatosGrupo();
+    }, 
+    (error) => {
+      console.error('Error en la carga de datos', error);
+    }
+    
+  );
+this.botoneditar = 'Guardar';
+  this.modeloGrupo = new grupo();
+  
+}
+
+
+enviarSolicitudPostEliminar(){
+
+  const url = "https://paginas-web-cr.com/ApiPHP/apis/BorrarGrupo.php";
+  //Datyos que deseas enviar en la solicitud post
+  const data = {
+    id: this.modeloGrupo.id,
+   
+    // Agrega mas datos segun tus necesidades
+  };
+  
+  const headers = new HttpHeaders({
+    'Content-Type': 'aplication/json' //Ajusta el tipo de contenido segun requerimientos
+  });
+  
+  //Realiza la solicitud POST
+  this.http.post(url, data, {headers}).subscribe(
+    (response) => {
+      //Maneja respuesta de la API
+      console.log('Respuesta de la API: ', response, );
+     
+      this.obtenerDatosGrupo();
+    }, 
+    (error) => {
+      console.error('Error en la carga de datos', error);
+    }
+    
+  );
 
 }
 
