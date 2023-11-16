@@ -11,7 +11,7 @@ import { Respuestacursos } from '../models/respuestacursos';
 })
 export class CursoComponent implements OnInit {
   //Atributos
-  title = 'primerAngular';
+  title = 'Curso';
   textoboton = "Guardar";
   selectedCursos: Cursos = new Cursos();
   selectedCurso: Cursos ={
@@ -116,6 +116,7 @@ this.http.post(url, this.modeloCurso, {headers}).subscribe(
     //Maneja respuesta de la API
     console.log('Respuesta de la API: ', response);
     this.obtenerDatos();
+    this.limpiar();
   }, 
   (error) => {
     console.error('Error en la carga de datos', error);
@@ -146,6 +147,7 @@ this.http.post(url, data, {headers}).subscribe(
     //Maneja respuesta de la API
     console.log('Respuesta de la API: ', response);
     this.obtenerDatos();
+    this.limpiar();
   }, 
   (error) => {
     console.error('Error en la carga de datos', error);
@@ -178,6 +180,7 @@ this.http.post(url, this.modeloCurso, {headers}).subscribe(
     //Maneja respuesta de la API
     console.log('Respuesta de la API: ', response);
     this.obtenerDatos();
+    this.limpiar();
   }, 
   (error) => {
     console.error('Error en la carga de datos', error);

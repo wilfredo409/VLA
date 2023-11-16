@@ -1,76 +1,83 @@
-<div class="container">
+<style>
+  .todo{
+    width: 100%;
+    padding-left: 10%;
+  }
+</style>
+
+<div class="todo">
     <h1>Mantenimiento de Profesor </h1>
 <br>
 <form class="validate">
   <div class="mb-3">
-    <label for="" class="form-label">Cédula</label>
-    <input required type="number"
+    <label for="" class="form-label" >Cédula</label>
+    <input required type="number" [(ngModel)]="modeloProfesor.cedula"
       class="form-control" name="cedula" id="cedulaCrear" aria-describedby="helpId" placeholder="Ingrese su cédula">
     
   </div>
    <div class="mb-3">
-    <label for="" class="form-label">Correo Electrónico</label>
-    <input required type="email"
+    <label for="" class="form-label" >Correo Electrónico</label>
+    <input required type="email" [(ngModel)]="modeloProfesor.correoelectronico"
       class="form-control" name="correoelectronico" id="correoelectronicoCrear" aria-describedby="helpId" placeholder="Ingrese su correo electrónico">
     
   </div>
    <div class="mb-3">
     <label for="" class="form-label">Teléfono</label>
-    <input required type="number"
+    <input required type="number" [(ngModel)]="modeloProfesor.telefono"
       class="form-control" name="telefono" id="telefonoCrear" aria-describedby="helpId" placeholder="Ingrese su teléfono">
     
   </div>
    <div class="mb-3">
-    <label for="" class="form-label">Celular</label>
-    <input required type="number"
+    <label for="" class="form-label" >Celular</label>
+    <input required type="number" [(ngModel)]="modeloProfesor.telefonocelular"
       class="form-control" name="telefonocelular" id="telefonocelularCrear" aria-describedby="helpId" placeholder="Ingrese su celular">
     
   </div>
    <div class="mb-3">
     <label for="" class="form-label">Fecha de nacimiento</label>
-    <input required type="date"
+    <input required type="date" [(ngModel)]="modeloProfesor.fechanacimiento"
       class="form-control" name="fechanacimiento" id="fechanacimientoCrear" aria-describedby="helpId" placeholder="Ingrese su fecha de nacimiento">
     
   </div>
    <div class="mb-3">
-    <label for="" class="form-label">Sexo</label>
-    <input required type="text"
+    <label for="" class="form-label" >Sexo</label>
+    <input required type="text" [(ngModel)]="modeloProfesor.sexo"
       class="form-control" name="sexo" id="sexoCrear" aria-describedby="helpId" placeholder="Ingrese su sexo">
     
   </div>
    <div class="mb-3">
     <label for="" class="form-label">Dirección</label>
-    <input required type="text"
+    <input required type="text" [(ngModel)]="modeloProfesor.direccion"
       class="form-control" name="direccion" id="direccionCrear" aria-describedby="helpId" placeholder="Ingrese su dirección">
     
   </div>
   <div class="mb-3">
     <label for="" class="form-label">Nombre</label>
-    <input required type="text"
+    <input required type="text" [(ngModel)]="modeloProfesor.nombre"
       class="form-control" name="nombre" id="nombreCrear" aria-describedby="helpId" placeholder="Ingrese el nombre">
     
   </div>
   <div class="mb-3">
       <label for="" class="form-label">Primer Apellido</label>
-      <input required type="text"
+      <input required type="text" [(ngModel)]="modeloProfesor.apellidopaterno"
         class="form-control" name="apellidopaterno" id="apellidopaternoCrear" aria-describedby="helpId" placeholder="Ingrese su primer apellido">
       
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Segundo Apellido</label>
-      <input required type="text"
-        class="form-control" name="apellidomaterno" id="apellidomaternoEstudianteCrear" aria-describedby="helpId" placeholder="Ingrese segundoapellido">
+      <input required type="text" [(ngModel)]="modeloProfesor.apellidomaterno"
+        class="form-control" name="apellidomaterno" id="apellidomaternoProfesorCrear" aria-describedby="helpId" placeholder="Ingrese segundoapellido">
       
     </div>
    <div class="mb-3">
     <label for="" class="form-label">Nacionalidad</label>
-    <input required type="text"
+    <input required type="text" [(ngModel)]="modeloProfesor.nacionalidad"
       class="form-control" name="nacionalidad" id="nacionalidadCrear" aria-describedby="helpId" placeholder="Ingrese su nacionalidad">
     
   </div>
    <div class="mb-3">
     <label for="" class="form-label">ID Carrera</label>
-    <input required type="number"
+    <input required type="number" [(ngModel)]="modeloProfesor.idCarreras"
       class="form-control" name="idCarreras" id="idCarrerasCrear" aria-describedby="helpId" placeholder="Ingrese su cédula">
     
   </div>
@@ -78,7 +85,8 @@
     
   
     <div class="d-grid gap-2">
-      <button type="button" class="btn btn-primary">Guardar</button>
+      <button (click)="addAndEditGrupo()" type="button" class="btn btn-primary" id="botoneditar2">{{botoneditar}}</button>
+      <button type="button" class="btn btn-danger"(click)="limpiar()">Reset</button>
     </div>
   </form>
 <br>
@@ -111,7 +119,7 @@
           </tr>
           </thead>
           <tbody class="table-group-divider">
-            <tr class="table-primary" *ngFor="let item of arregloDatos" >
+            <tr class="table-primary" *ngFor="let item of arregloDatos" (click)="cargaredicion(item)">
               <td scope="row" >{{ item.id}} </td>
               <td>{{item.cedula}}</td>
               <td>{{item.correoelectronico}}</td>
@@ -126,6 +134,10 @@
               <td>{{item.nacionalidad}}</td>
               <td>{{item.idCarreras}}</td>
               <td>{{item.usuario}}</td>
+
+              <td><div class="d-grid gap-2">
+                <button type="button" name="" id="" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
+              </div></td>
             </tr>
             
           </tbody>

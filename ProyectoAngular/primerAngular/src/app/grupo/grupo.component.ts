@@ -119,6 +119,7 @@ enviarSolicitudPostGrupoEditar(){
       console.log('Respuesta de la API: ', response, );
      
       this.obtenerDatosGrupo();
+      this.limpiar();
     }, 
     (error) => {
       console.error('Error en la carga de datos', error);
@@ -152,6 +153,7 @@ enviarSolicitudPostEliminar(){
       console.log('Respuesta de la API: ', response, );
      
       this.obtenerDatosGrupo();
+      this.limpiar();
     }, 
     (error) => {
       console.error('Error en la carga de datos', error);
@@ -181,6 +183,7 @@ this.http.post(url, this.modeloGrupo, {headers}).subscribe(
     console.log('Respuesta de la API: ', response, );
    
     this.obtenerDatosGrupo();
+    this.limpiar();
   }, 
   (error) => {
     console.error('Error en la carga de datos', error);

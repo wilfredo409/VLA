@@ -12,6 +12,62 @@ import { Respuestaprofesor } from '../models/respuestaprofesor';
 export class ProfesorComponent implements OnInit {
   //Atributos
   title = 'primerAngular';
+  botoneditar = 'Guardar';
+
+  selectedProfesores: Profesor = new Profesor();
+  selectedProfesor: Profesor ={
+    id: '',
+    cedula:'',
+    correoelectronico: '',
+    telefono: '',
+        telefonocelular: '',
+        fechanacimiento: '',
+        sexo: '',
+        direccion: '',
+        nombre: '',
+        apellidopaterno: '',
+        apellidomaterno: '',
+        nacionalidad: '',
+        idCarreras: '',
+        usuario: '',
+  };
+
+
+  modeloProfesor: Profesor = new Profesor();
+
+  addAndEditGrupo(){
+    
+    if (this.modeloProfesor.id == ""){
+      this.enviarSolicitudPostProfesor();
+    }else{
+      this.enviarSolicitudPostProfesorEditar();
+  }
+
+    
+    
+  }
+
+  cargaredicion(item: Profesor){
+    this.botoneditar = "Modificar";
+    this.modeloProfesor = item;
+    console.log(item);
+    
+  }
+
+  limpiar(){
+    this.modeloProfesor = new Profesor();
+    this.botoneditar = 'Guardar';
+    
+  }
+
+  eliminar(item: Profesor){
+    this.modeloProfesor = item;
+    
+    this.enviarSolicitudPostEliminar();
+    
+    }
+
+
 
  // arregloDatos: Cursos[] = [
  //   {id:"1", nombre : "html5", descripcion: "111", tiempo: "1", usuario:"Edwin"},
@@ -52,6 +108,104 @@ ngOnInit(): void {
   this.obtenerDatos();
 
 }
+
+
+enviarSolicitudPostProfesorEditar(){
+
+  const url = "https://paginas-web-cr.com/ApiPHP/apis/ActualizarProfesores.php";
+  //Datyos que deseas enviar en la solicitud post
+  const data = {
+    parametro1: 'valor1',
+   
+    // Agrega mas datos segun tus necesidades
+  };
+  
+  const headers = new HttpHeaders({
+    'Content-Type': 'aplication/json' //Ajusta el tipo de contenido segun requerimientos
+  });
+  
+  //Realiza la solicitud POST
+  this.http.post(url, this.modeloProfesor, {headers}).subscribe(
+    (response) => {
+      //Maneja respuesta de la API
+      console.log('Respuesta de la API: ', response, );
+     
+      this.obtenerDatos();
+      this.limpiar();
+    }, 
+    (error) => {
+      console.error('Error en la carga de datos', error);
+    }
+    
+  );
+
+  
+}
+
+
+enviarSolicitudPostEliminar(){
+
+  const url = "https://paginas-web-cr.com/ApiPHP/apis/BorrarProfesores.php";
+  //Datyos que deseas enviar en la solicitud post
+  const data = {
+    id: this.modeloProfesor.id,
+   
+    // Agrega mas datos segun tus necesidades
+  };
+  
+  const headers = new HttpHeaders({
+    'Content-Type': 'aplication/json' //Ajusta el tipo de contenido segun requerimientos
+  });
+  
+  //Realiza la solicitud POST
+  this.http.post(url, data, {headers}).subscribe(
+    (response) => {
+      //Maneja respuesta de la API
+      console.log('Respuesta de la API: ', response, );
+     
+      this.obtenerDatos();
+      this.limpiar();
+    }, 
+    (error) => {
+      console.error('Error en la carga de datos', error);
+    }
+    
+  );
+   
+}
+
+enviarSolicitudPostProfesor(){
+  const url = "https://paginas-web-cr.com/ApiPHP/apis/InsertarProfesores.php";
+//Datyos que deseas enviar en la solicitud post
+const data = {
+  parametro1: 'valor1',
+ 
+  // Agrega mas datos segun tus necesidades
+};
+
+const headers = new HttpHeaders({
+  'Content-Type': 'aplication/json' //Ajusta el tipo de contenido segun requerimientos
+});
+
+//Realiza la solicitud POST
+this.http.post(url, this.modeloProfesor, {headers}).subscribe(
+  (response) => {
+    //Maneja respuesta de la API
+    console.log('Respuesta de la API: ', response, );
+   
+    this.obtenerDatos();
+    this.limpiar();
+  }, 
+  (error) => {
+    console.error('Error en la carga de datos', error);
+  }
+  
+);
+
+
+
+}
+
 
 
 }

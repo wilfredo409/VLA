@@ -1,46 +1,79 @@
 
 
+ 
 
-<div class="container">
-  <div class="container">
+  
     
   
   
   
   
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="#about"  (click)="cambiarPestana('pestana1')">
+        <h3 class="texto">Proyecto Angular</h3>
+      </a> 
     
    
-   <div class="container-fluid">
+   
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" >
-      <li class="nav-item" >
-        <a class="nav-link"  [class.active]="pestanaActiva === 'pestana1'" (click)="cambiarPestana('pestana1')">Cursos</a>
+    <nav id="navbar" class="navbar">
+    <ul >
+      
+      <li >
+        <a class="nav-link scrollto  rounded-5"  [class.active]="pestanaActiva === 'pestana2'" (click)="cambiarPestana('pestana2')">Cursos</a>
       </li>
-      <li class="nav-item" >
-        <a class="nav-link"  [class.active]="pestanaActiva === 'pestana2'" (click)="cambiarPestana('pestana2')">Grupos</a>
+      <li >
+        <a class="nav-link scrollto  rounded-5"  [class.active]="pestanaActiva === 'pestana3'" (click)="cambiarPestana('pestana3')">Grupos</a>
       </li>
-      <li class="nav-item" >
-        <a class="nav-link"  [class.active]="pestanaActiva === 'pestana3'" (click)="cambiarPestana('pestana3')">Estudiantes</a>
+      <li >
+        <a class="nav-link scrollto rounded-5"  [class.active]="pestanaActiva === 'pestana4'" (click)="cambiarPestana('pestana4')">Estudiantes</a>
       </li>
-      <li class="nav-item" >
-        <a class="nav-link"  [class.active]="pestanaActiva === 'pestana4'" (click)="cambiarPestana('pestana4')">Profesor</a>
+      <li >
+        <a class="nav-link scrollto rounded-5"  [class.active]="pestanaActiva === 'pestana5'" (click)="cambiarPestana('pestana5')">Profesor</a>
       </li>
     </ul>
-    
+  </nav>
+</div>
     <!-- Tab panes -->
-    <div class="tab-content">
+    <div class="tab-content ">
       <div *ngIf="pestanaActiva === 'pestana1'">
+        <section id="hero" class="hero d-flex align-items-center">
+
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <h1 data-aos="fade-up" class="aos-init aos-animate">Primer proyecto Angular</h1>
+                <h2 data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">Angular es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página.</h2>
+                <div data-aos="fade-up" data-aos-delay="600" class="aos-init aos-animate">
+                  <div class="text-center text-lg-start">
+                    <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center" (click)="cambiarPestana('pestana2')">
+                      <span>Empezar!!</span>
+                      <i class="bi bi-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 hero-img aos-init aos-animate" data-aos="zoom-out" data-aos-delay="200">
+                <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+      
+        </section>
+        </div>
+      <div *ngIf="pestanaActiva === 'pestana2'">
         <app-curso></app-curso>
         </div>
-        <div *ngIf="pestanaActiva === 'pestana2'">
-            Esto es una prueba
+        <div *ngIf="pestanaActiva === 'pestana3'">
+           
             <app-grupo></app-grupo>
            </div>
-           <div *ngIf="pestanaActiva === 'pestana3'">
+           <div *ngIf="pestanaActiva === 'pestana4'">
             <app-estudiante></app-estudiante>
            </div>
 
-           <div *ngIf="pestanaActiva === 'pestana4'">
+           <div *ngIf="pestanaActiva === 'pestana5'">
             <app-profesor></app-profesor>
            </div>
 
@@ -49,10 +82,10 @@
 
 
        </div>
-   </div>
+   
     
 
-  </div>
+  
 
   
   
@@ -60,5 +93,5 @@
 
 
 
-</div>
+
 
