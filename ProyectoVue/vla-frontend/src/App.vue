@@ -1,16 +1,20 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <FormularioBienvenida></FormularioBienvenida>
+  <h2>Haciendo un calculador Vue</h2>
+  <CalculadoraBasica></CalculadoraBasica>
 </template>
 
 <script>
 
 import FormularioBienvenida from './components/FormularioBienvenida.vue';
+import CalculadoraBasica from './components/Calculadorabasica.vue';
 
 export default {
   name: 'App',
   components: {
-    FormularioBienvenida
+    FormularioBienvenida,
+    CalculadoraBasica
   }
 }
 </script>
