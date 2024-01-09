@@ -2,19 +2,22 @@
   <img alt="Vue logo" src="./assets/logo.png">
   <FormularioBienvenida></FormularioBienvenida>
   <h2>Haciendo un calculador Vue</h2>
-  <CalculadoraBasica></CalculadoraBasica>
+  <calculadoraBasicaVue></calculadoraBasicaVue>
+  <h2>Llenando etiquetas con V-FOR</h2>
+  <LlenandoEtiquetas></LlenandoEtiquetas>
 </template>
 
 <script>
 
 import FormularioBienvenida from './components/FormularioBienvenida.vue';
-import CalculadoraBasica from './components/Calculadorabasica.vue';
-
+import calculadoraBasicaVue from './components/calculadora-basica.vue';
+import LlenandoEtiquetas from './components/LlenandoEtiquetas.vue';
 export default {
   name: 'App',
   components: {
     FormularioBienvenida,
-    CalculadoraBasica
+    calculadoraBasicaVue,
+    LlenandoEtiquetas
   }
 }
 </script>
