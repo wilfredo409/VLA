@@ -17,7 +17,7 @@
         data(){
             return{
                 frutas : ["Manzana", "Banano", "Naranja", "Uva", "Sandia"],
-                frutaSeleccionada : ""
+                frutaSeleccionada : " "
             };
         }
         
