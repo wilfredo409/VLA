@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import PrimerFormulario from './primerFormulario';
+//import PrimerFormulario from './primerFormulario';
+import ContadorClicks from './ContadordeCLicks';
+
+import EncenderCarro from './EncenderCarro';
 
 function App() {
   return (
@@ -9,8 +12,8 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
        
 
-        <PrimerFormulario></PrimerFormulario>
-        
+        <ContadorClicks></ContadorClicks>
+        <EncenderCarro></EncenderCarro>
       </header>
     </div>
   );
