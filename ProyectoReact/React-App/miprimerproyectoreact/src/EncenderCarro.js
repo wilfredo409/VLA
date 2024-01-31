@@ -22,12 +22,12 @@ function EncenderCarro(props){
         
     <h1>Estado del carro </h1>
 
-    <h3>Hola</h3>
+    
         <div className="mb-3">
             
             <div className="d-grid gap-2">
-                <h4>{estado}</h4>
-                <h4>{estadoreal}  El carro esta: {estado == false ? "Encendido" : "Apagado"}</h4>
+                <h4>{estadoreal}</h4>
+                <h4>  El carro esta: {estado === true ? "Encendido" : "Apagado"}</h4>
                 <button
                     type="button"
                     name=""

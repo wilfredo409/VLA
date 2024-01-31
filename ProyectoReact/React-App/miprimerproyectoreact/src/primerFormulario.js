@@ -6,7 +6,7 @@ function primerFormulario(props){
     function mostrarNombre(){
         var texto = document.getElementById('textoNombre').value;
 
-        document.getElementById("mensaje").innerHTML = texto;
+        document.getElementById("mensaje1").innerHTML = texto;
         //Mostrar en h1 lo que el usuario digite
     }
 
@@ -34,8 +34,10 @@ function primerFormulario(props){
                 >
                     Enviar
                 </button>
-                <h1 id="mensaje"></h1>
+                <h3 id="mensaje1">Aqui aparece el nombre</h3>
             </div>
+
+            
             
         </div>
                 

@@ -73,3 +73,12 @@ function ContadorClicks(props){
 
 
 export default ContadorClicks;
+
+
+/* 
+    Crear otro componente con el nobre EncenderCarro
+    una Variable booleana
+    con un boton usted va a encender o apagar
+    <h4> el carro esta encendido o pagado
+
+*/  
