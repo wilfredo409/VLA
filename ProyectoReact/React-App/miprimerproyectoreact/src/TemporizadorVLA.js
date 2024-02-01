@@ -7,7 +7,7 @@ function TemporizadorVLA() {
     useEffect(()=>{
         const intervalorId = setInterval(()=>{
             setContador((prevContador)=> prevContador+ 1);
-            if (contador === 10)
+           /* if (contador === 10)
             {
                 alert("Au sesion ya esta por terminar");
                 
@@ -15,8 +15,8 @@ function TemporizadorVLA() {
 
             if(contador >=15){
                 alert("Lo siento tiene que irse");
-            }
-        }, 1000)
+            }*/
+        }, 1000000)
 
         return ()=>{
 

@@ -6,6 +6,9 @@ import ControlandoContadorLikes from './ControlandoContadorLikes';
 import EncenderCarro from './EncenderCarro';
 import EjemploUseEffectVector from './EjemploUseEffectVector';
 import TemporizadorVLA from './TemporizadorVLA';
+import EjemploUseRef1 from './EjemploUseRef1';
+import EjemploUseRef2 from './EjemploUseRef2';
+import EjemploDirectivaIF from './EjemploDirectivaIF';
 
 
 
@@ -21,6 +24,9 @@ function App() {
         <ControlandoContadorLikes></ControlandoContadorLikes>
         <EjemploUseEffectVector></EjemploUseEffectVector>
         <TemporizadorVLA></TemporizadorVLA>
+        <EjemploUseRef1></EjemploUseRef1>
+        <EjemploUseRef2></EjemploUseRef2>
+        <EjemploDirectivaIF></EjemploDirectivaIF>
 
       </header>
     </div>
