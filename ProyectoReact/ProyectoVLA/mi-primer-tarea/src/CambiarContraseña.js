@@ -1,17 +1,50 @@
-import React from "react";
+import React, {useState} from "react";
+import './contrasena.css';
 
 function CambiarContrasena() {
 
+    const [contrasenaNueva, setContrasena] = useState();
+    var estadopassword ="debil";
+      
+    function CambiarContrasena(){
+      var texto1 = document.getElementById("contra1").value;
+        
+   if( texto1.length < 11 )
+        estadopassword = "debil" 
+
+
+        var contrasenaAnterior = document.getElementById("contra1").value
+        setContrasena(document.getElementById("contra2"))
+
+        
+
+        if (contrasenaNueva === contrasenaAnterior){
+            alert("Contrasena Cambiada su nueva contrasena es: " + contrasenaNueva.value);
+            setContrasena(contrasenaNueva);
+        }
+        else
+            alert("Las contraseñas no son correctas");
+    }
+
     return(
         <div>
-            <h1>Cambiando Contraseña</h1>
-            <input className="form-control" type="password" placeholder="Ingresa contraseña"></input>
+        <h1>Cambio de Contrasena</h1>
+       <form id="form_Modal" className="needs-validation" >
+        <div className="mb-3">
+          <label for="" className="form-label">Digite su contrasena nueva</label>
+          <input required 
+            className={"form-label debil" + {estadopassword}} name="" id="contra1" aria-describedby="helpId" placeholder=""/>
+          <label for="" className="form-label">Repita su contrasena nueva</label>
+          <input required type="password"
+            classNameName="form-control" name="" id="contra2" aria-describedby="helpId" placeholder=""/>
             <br></br>
-            <input className="form-control" type="password" placeholder="Confirmar contraseña"></input>
-            <br></br>
-            <button className="btn btn-primary">Cambiar contraseña</button>
-
+          <div className="d-grid gap-2">
+            <button type="button" name="" id="" className="btn btn-primary" onClick={CambiarContrasena}>Actualizar</button>
+          </div>
+         
         </div>
+        </form>
+      </div>
     )
   }
   export default CambiarContrasena;

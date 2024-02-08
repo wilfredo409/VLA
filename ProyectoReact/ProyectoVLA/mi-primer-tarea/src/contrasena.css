@@ -1,0 +1,14 @@
+.correcto
+{
+    font-palette: rgb(36, 146, 36);
+}
+
+.intermedio
+{
+    font-palette: yellow;
+}
+
+.debil
+{
+    border-color: rgb(199, 35, 35);
+}
