@@ -9,7 +9,7 @@ function CalcularDescuento(){
     */
 
     const [monto, setMonto]= useState(200000);
-    const [tipoTarjeta, setTipoTarjeta] = useState("visas");
+    const [tipoTarjeta, setTipoTarjeta] = useState("visa");
     const [descuentoAplicado, setDescuentoAplicado] = useState(0);
 
     function CalcularDescuentoPago(){
