@@ -3,14 +3,11 @@ import './contrasena.css';
 
 function CambiarContrasena() {
 
-    const [contrasenaNueva, setContrasena] = useState();
-    var estadopassword ="debil";
+    const [contrasenaNueva, setContrasena] = useState("");
+    
       
     function CambiarContrasena(){
-      var texto1 = document.getElementById("contra1").value;
-        
-   if( texto1.length < 11 )
-        estadopassword = "debil" 
+     
 
 
         var contrasenaAnterior = document.getElementById("contra1").value
@@ -18,12 +15,12 @@ function CambiarContrasena() {
 
         
 
-        if (contrasenaNueva === contrasenaAnterior){
+        if (contrasenaNueva.value === contrasenaAnterior){
             alert("Contrasena Cambiada su nueva contrasena es: " + contrasenaNueva.value);
             setContrasena(contrasenaNueva);
         }
         else
-            alert("Las contraseñas no son correctas");
+            alert("Las contraseñas no son correctas" + contrasenaAnterior);
     }
 
     return(
@@ -32,11 +29,11 @@ function CambiarContrasena() {
        <form id="form_Modal" className="needs-validation" >
         <div className="mb-3">
           <label for="" className="form-label">Digite su contrasena nueva</label>
-          <input required 
-            className={"form-label debil" + {estadopassword}} name="" id="contra1" aria-describedby="helpId" placeholder=""/>
+          <input required type="password"
+            className="form-control debil"  name="" id="contra1" aria-describedby="helpId" placeholder=""/>
           <label for="" className="form-label">Repita su contrasena nueva</label>
           <input required type="password"
-            classNameName="form-control" name="" id="contra2" aria-describedby="helpId" placeholder=""/>
+            className="form-control debil" name="" id="contra2" aria-describedby="helpId" placeholder=""/>
             <br></br>
           <div className="d-grid gap-2">
             <button type="button" name="" id="" className="btn btn-primary" onClick={CambiarContrasena}>Actualizar</button>
