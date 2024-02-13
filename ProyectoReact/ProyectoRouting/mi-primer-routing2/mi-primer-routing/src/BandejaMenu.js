@@ -8,13 +8,13 @@ function BandejaMenu(){
             <nav className="navbar">
                 <ul>
                     <li>
-                        <NavLink to="/">Home</NavLink>
+                        <NavLink to="/" >Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/contact">Contact</NavLink>
+                        <NavLink to="/contact" >Contact</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/about">About Us</NavLink>
+                        <NavLink to="/about" >About Us</NavLink>
                     </li>
                 </ul>
             </nav>
