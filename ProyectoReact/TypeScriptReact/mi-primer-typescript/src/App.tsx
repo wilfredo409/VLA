@@ -3,6 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import Formulario1 from './Formulario1'
 import SumarDosValores from './SumarDosValores';
+import AprendiendoListas from './AprendiendoListas';
+import ContadordeClicks from './ContadordeClicks';
+import ContadorHooks from './ContadorHook';
+import EstadoCivil from './EstadoCivil';
 
 function App() {
   return (
@@ -15,6 +19,11 @@ function App() {
        correo='edwin@ceron.com'></Formulario1>
 
        <SumarDosValores></SumarDosValores>
+       <AprendiendoListas></AprendiendoListas>
+       <ContadordeClicks></ContadordeClicks>
+       <ContadorHooks></ContadorHooks>
+       <EstadoCivil></EstadoCivil>
+
       </header>
     </div>
   );
