@@ -1,18 +1,18 @@
 import React, {useReducer} from "react";
 type Action = {
-    type: 'Soltero'
-} | {type : 'Casado'}
+    type: 'soltero'
+} | {type : 'casado'}
 
-type Persona = {nombre: string} | {EstadoCivil: 'soltero'|'casado'}
+type Persona = {nombre: string, maritalStatus: 'soltero'|'casado'}
 
 const personaReducer = (state: Persona, action: Action): Persona =>
 {
     switch(action.type){
-        case 'Casado':
-            return {...state, EstadoCivil:'casado'};
+        case 'casado':
+            return {...state, maritalStatus:'casado'};
             
-        case 'Soltero':
-            return {...state, EstadoCivil:'soltero'};
+        case 'soltero':
+            return {...state, maritalStatus:'soltero'};
         default:
             return state;        
        
@@ -21,17 +21,17 @@ const personaReducer = (state: Persona, action: Action): Persona =>
 
 
 const EstadoCivil: React.FC = ()=> {
-    const [persona, dispatch] = useReducer(personaReducer, {nombre:"Edwin", EstadoCivil:"soltero"});
-   
+    const [persona, dispatch] = useReducer(personaReducer, {nombre:"Edwin", maritalStatus:"soltero"});
+   const {maritalStatus} = persona;
     return(
         <div>
              <div>
             <h1>Digite su nombre</h1>
             <form>
-            <input type="text" id="name"></input>
+            <h1>{maritalStatus}</h1>
            
-            <button onClick={() => dispatch({type:'Soltero'})}>Soltero</button>
-            <button onClick={() => dispatch({type:'Casado'})}>Casado</button>
+            <button onClick={() => dispatch({type:'soltero'})}>Soltero</button>
+            <button onClick={() => dispatch({type:'casado'})}>Casado</button>
             
             </form>
         </div>
