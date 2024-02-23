@@ -1,9 +1,8 @@
 import React, {useReducer} from "react";
-type Action = {
-    type: 'soltero'
-} | {type : 'casado'}
+
 
 type Persona = {nombre: string, maritalStatus: 'soltero'|'casado'}
+type Action = {type: 'soltero'} | {type : 'casado'}
 
 const personaReducer = (state: Persona, action: Action): Persona =>
 {
@@ -28,6 +27,7 @@ const EstadoCivil: React.FC = ()=> {
              <div>
             <h1>Digite su nombre</h1>
             <form>
+                
             <h1>{maritalStatus}</h1>
            
             <button onClick={() => dispatch({type:'soltero'})}>Soltero</button>
