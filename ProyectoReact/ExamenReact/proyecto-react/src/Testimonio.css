@@ -1,0 +1,76 @@
+
+.caja {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+	padding: 10% 0;
+}
+.valoracion {
+	background-color: #f5f5f5;
+	border-radius: 10px;
+	padding: 20px;
+	width: 300px;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+}
+.imagen-testimonio {
+	width: 80px;
+	height: 80px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-right: 25px;
+}
+.imagen-testimonio img {
+	width: 100%;
+}
+.contenido-principal {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+.info h4 {
+	margin: 0;
+	font-size: 22px;
+	font-weight: 600;
+	color: #000;
+}
+.info p {
+	margin: 5px 0 0;
+	font-size: 14px;
+	font-weight: 400;
+	color: #666;
+}
+.comentario-cliente p {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.7;
+	color: #333;
+}
+.valoracion-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+	font-size: 14px;
+	color: #666;
+}
+.calificacion {
+	display: flex;
+}
+.calificacion span {
+	color: #000;
+	font-size: 18px;
+}
+.calificacion span.active {
+	color: #fbc02d;
+}
+@media screen and (max-width: 767px) {
+	.caja {
+		flex-direction: column;
+		align-items: center;
+	}
+	.valoracion {
+		width: 85%;
+	}
+}
