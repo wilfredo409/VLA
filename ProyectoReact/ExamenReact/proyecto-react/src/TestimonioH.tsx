@@ -7,7 +7,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const TestimonioH : React.FC =() =>{
     return(
         <div>
+            <h1>TESTIMONIOS</h1>
             <div className="caja">
+            
             <Testimonio 
         nombre="Julieta Santos"
         edad={35}
