@@ -12,6 +12,8 @@ import Menu from './Menu';
 import Home from './Home';
 import { Route, Routes } from 'react-router-dom';
 import Footer from './footer';
+import Formulario from './Formulario';
+import Beneficios from './Beneficios';
 
 
 function App() {
@@ -19,13 +21,15 @@ function App() {
     <div className="App">
       <Menu></Menu>
       
-      <header className="App-header">
-       <img className="d-block" src={banner1} />
+      <header className="App-header ">
+       <img className="d-block" src={banner1} style={{ width: '70%', height: '500px' }} />
    
      
       
       <Routes>
           <Route path="testimonio" element={<TestimonioH></TestimonioH>} > </Route>
+          <Route path="beneficios" element={<Beneficios></Beneficios>} > </Route>
+          <Route path="formulario" element={<Formulario></Formulario>} > </Route>
           <Route path="/" element={<Home></Home>} > </Route>
           
 
@@ -36,8 +40,9 @@ function App() {
 
    
       </header>
-
+      <footer className="App-footer bg-dark">
       <Footer></Footer>
+      </footer>
     </div>
   );
 }

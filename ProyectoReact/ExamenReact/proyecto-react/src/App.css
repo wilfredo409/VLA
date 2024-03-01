@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-h1{
+.hi1{
   color: white;
 }
 
@@ -10,7 +10,12 @@ h1{
   height: 40vmin;
   pointer-events: none;
 }
-
+.Rojo{
+  color: red;
+}
+.Verde{
+  color: green;
+}
 .tituloc{
   color: rgba(255, 0, 0, 0.76);
 }

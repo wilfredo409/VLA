@@ -23,10 +23,10 @@ const Menu: React.FC=()=>{
           <NavLink to="/" className="nav-link active" >Inicio</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="Nosotros" className="nav-link" >Nosotros</NavLink>
+          <NavLink to="/beneficios" className="nav-link" >Beneficios</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="Contacto" className="nav-link" >Contactenos</NavLink>
+          <NavLink to="/formulario" className="nav-link" >Contactenos</NavLink>
         </li>
         <li className="nav-item">
           <NavLink to="/testimonio" className="nav-link" >Testimonios</NavLink>
